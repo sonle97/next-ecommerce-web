@@ -1,0 +1,91 @@
+.news_slide {
+  margin: 10px 0px 0px 10px;
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    opacity: 0;
+    transition:
+      transform 0.3s,
+      opacity 0.3s;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #000;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 99;
+    &::after {
+      font-size: 12px;
+      font-weight: 900;
+    }
+  }
+
+  &:hover {
+    .swiper-button-prev,
+    .swiper-button-next {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .blog-item-wrapper {
+    .blog-item {
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: "";
+        border-radius: 10px;
+        background: rgb(12, 26, 7);
+        background: linear-gradient(180deg, rgba(12, 26, 7, 0) 11%, rgba(12, 26, 7, 0.8547794117647058) 77%);
+        z-index: 1;
+      }
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: "";
+        background-color: rgba(14, 34, 7, 0.3);
+        border-radius: 10px;
+        transform: perspective(400px) rotateX(90deg) scaleY(0.5);
+        transform-origin: center;
+        transition-delay: 0.1s;
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.5s;
+        transition-property: all;
+      }
+      img {
+        height: 390px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+    .text {
+      color: #fff;
+      transition: all 500ms ease;
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 2;
+      line-height: 30px;
+      &:hover {
+        color: #93c63e;
+      }
+    }
+
+    &:hover {
+      .blog-item::after {
+        transform: perspective(400px) rotateX(0deg) scaleY(1);
+        transition-delay: 0.1s;
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.7s;
+        transition-property: all;
+      }
+    }
+  }
+}
