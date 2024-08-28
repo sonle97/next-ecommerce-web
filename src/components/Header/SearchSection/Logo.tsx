@@ -8,7 +8,7 @@ function Logo() {
         src="/lyxanh_logo.jpg"
         alt="Ly xanh Logo"
         className="dark:invert"
-        width={150}
+        width={130}
         height={28}
         priority
       />

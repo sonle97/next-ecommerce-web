@@ -26,13 +26,25 @@ function Hero() {
         pagination={{ clickable: true }}
       >
         <SwiperSlide>
-          <Image src={HeroBanner} alt="hero banner" className="h-[360px]" />
+          <Image
+            src={HeroBanner}
+            alt="hero banner"
+            className="h-[360px] w-full"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <Image src={HeroBanner} alt="hero banner" className="h-[360px]" />
+          <Image
+            src={HeroBanner}
+            alt="hero banner"
+            className="h-[360px] w-full"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <Image src={HeroBanner} alt="hero banner" className="h-[360px]" />
+          <Image
+            src={HeroBanner}
+            alt="hero banner"
+            className="h-[360px] w-full"
+          />
         </SwiperSlide>
       </Swiper>
     </section>

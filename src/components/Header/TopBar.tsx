@@ -7,10 +7,10 @@ import { PhoneNumber } from "@/constants";
 
 function TopBar() {
   return (
-    <div className="bg-blue-1 py-1 text-white">
-      <div className="container flex items-center justify-between text-sm">
+    <div className="bg-blue-1 py-2 text-white">
+      <div className="container flex items-center justify-between text-base">
         <span className="uppercase flex items-center font-medium">
-          Ly xanh |&nbsp;
+          Ly xanh &nbsp;|&nbsp;&nbsp;
           <HiPhone size={18} />
           &nbsp;
           <a

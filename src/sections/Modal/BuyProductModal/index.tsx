@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import Modal, { ModalProps } from "@/components/ui/Modal";
 import productImage from "@/images/product1.jpg";
 import { Input, TextArea } from "@/components/ui/Input";

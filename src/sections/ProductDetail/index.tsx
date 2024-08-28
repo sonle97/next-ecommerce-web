@@ -2,17 +2,14 @@
 
 import Breadcrumb from "@/components/Breadcrumb";
 import Images from "./Images";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import DescriptionTabs from "./DescriptionTabs";
 import RelatedProducts from "./RelatedProducts";
 import { useState } from "react";
 import BuyProductModal from "../Modal/BuyProductModal";
+import { IProductProps } from "@/components/Product";
 
-interface ProductDetail {
-  slug: string;
-}
-
-const ProductDetail = ({ slug }: ProductDetail) => {
+const ProductDetail = ({ product }: { product: IProductProps }) => {
   const [isBuyNowModalOpen, setIsBuyNowModalOpen] = useState<boolean>(false);
 
   return (
@@ -25,14 +22,15 @@ const ProductDetail = ({ slug }: ProductDetail) => {
           </div>
           <div className="w-1/2 pl-10">
             <h2 className="text-2xl font-medium mb-3 text-blue-3">
-              Cửa Cổng Đẹp Sắt Kẽm SP-48535
+              {product.name}
             </h2>
 
             <p className="mb-2">
-              Thương hiệu: <span className="font-semibold">APC</span>
+              Thương hiệu:{" "}
+              <span className="font-semibold">{product.brand}</span>
             </p>
             <p className="mb-2">
-              Mã sản phẩm: <span className="font-semibold">APC</span>
+              Mã sản phẩm: <span className="font-semibold">{product.slug}</span>
             </p>
             <p className="mb-3">
               Tình trạng:{" "}
@@ -56,20 +54,13 @@ const ProductDetail = ({ slug }: ProductDetail) => {
             <div className="flex items-center mb-3 mt-6">
               <Button className="bg-blue-3 mr-4 h-[40px]">Thêm vào giỏ</Button>
               <Button
-                className="bg-red-1 h-[40px]"
+                className="bg-green-5 h-[40px]"
                 onClick={() => setIsBuyNowModalOpen(true)}
               >
                 Mua ngay
               </Button>
             </div>
-            <Button className="mb-3 bg-green-5 w-full h-[50px]">
-              Báo giá sỉ: 0347366345
-            </Button>
-
-            <Button className="mb-3 bg-green-5 w-full h-[50px] text-2xl">
-              Tư vấn thiết kế theo yêu cầu
-            </Button>
-            <div>Danh mục: ABC, CDF</div>
+            <div className="mt-[4px]">Danh mục: ABC, CDF</div>
           </div>
         </div>
 

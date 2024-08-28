@@ -17,20 +17,23 @@ function Categories() {
   const isShowButtonScrollToTop = scrollY > 200;
 
   const isHomePage = pathname === "/";
+  const isProductPage = pathname === "/san-pham";
 
   useEffect(() => {
     setIsCategoriesOpen(isHomePage);
   }, [isHomePage]);
 
   useEffect(() => {
-    if (isHomePage) {
-      if (isShowButtonScrollToTop) {
+    if (isHomePage || isProductPage) {
+      if (isShowButtonScrollToTop && isHomePage) {
         setIsCategoriesOpen(false);
       } else {
         setIsCategoriesOpen(true);
       }
+    } else {
+      setIsCategoriesOpen(false);
     }
-  }, [isShowButtonScrollToTop, isHomePage]);
+  }, [isShowButtonScrollToTop, isHomePage, isProductPage]);
 
   return (
     <div className="relative w-1/4">

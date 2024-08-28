@@ -4,7 +4,7 @@ import { BsCart4 } from "react-icons/bs";
 
 import { SellingData, SellingDataProps } from "./data";
 import "./styles.scss";
-import { ButtonBuyNow } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 function SellingSection() {
   return (
@@ -32,11 +32,11 @@ function SellingSection() {
                   alt="product"
                   height={134}
                   width={134}
-                  className="rounded-tl-[5px] rounded-bl-[5px]"
+                  className="rounded-tl-[5px] rounded-bl-[5px] h-full"
                 />
               </Link>
 
-              <div className="p-[10px] pt-5">
+              <div className="p-[10px] px-[15px]">
                 <Link
                   href=""
                   className="text-blue-3 hover:text-blue-2 text-[17px] font-bold"
@@ -60,7 +60,7 @@ function SellingSection() {
                       title="Thêm vào giỏ"
                     />
                   </div>
-                  <ButtonBuyNow />
+                  <Button variant="by_now">Mua ngay</Button>
                 </div>
               </div>
             </div>

@@ -3,7 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import { BsCart4 } from "react-icons/bs";
 
 import "./styles.scss";
-import { ButtonBuyNow } from "../ui/Button";
+import { Button } from "../ui/button";
 
 export interface IProductProps {
   image: string | StaticImageData;
@@ -11,6 +11,7 @@ export interface IProductProps {
   oldPrice: string;
   newPrice: string;
   brand: string;
+  slug: string;
 }
 
 interface ProductProps {
@@ -27,7 +28,10 @@ const Product = (props: ProductProps) => {
       } relative flex flex-col items-center border rounded-[8px] border-gray-4
         hover:shadow-product-item w-[calc(100%/4-18px)] product`}
     >
-      <Link href="/san-pham/abc" className="rounded-tl-lg rounded-tr-lg">
+      <Link
+        href={`/san-pham/${product.slug}`}
+        className="rounded-tl-lg rounded-tr-lg"
+      >
         <Image
           src={product.image}
           alt="product"
@@ -38,7 +42,7 @@ const Product = (props: ProductProps) => {
       </Link>
       <div className="p-4">
         <Link
-          href="/san-pham/abc"
+          href={`/san-pham/${product.slug}`}
           className="text-blue-3 hover:text-blue-2 text-[17px] font-bold"
         >
           <p>{product.name}</p>
@@ -53,7 +57,7 @@ const Product = (props: ProductProps) => {
           <span className="text-red-3">{product.newPrice}</span>
         </div>
         <div className="flex items-center justify-between mt-4 gap-3">
-          <ButtonBuyNow />
+          <Button variant="by_now">Mua ngay</Button>
           <div className="bg-blue-3 hover:bg-blue-5 rounded-[50%] p-2 cursor-pointer">
             <BsCart4 size={20} className="text-white" title="Thêm vào giỏ" />
           </div>

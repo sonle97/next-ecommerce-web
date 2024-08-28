@@ -5,13 +5,14 @@ import productImage from "@/images/product1.jpg";
 import Product from "@/components/Product";
 import Breadcrumb from "@/components/Breadcrumb";
 
-const products = [
+export const products = [
   {
     image: productImage,
     name: "Mồi Cá Giả TD70 Lure Star",
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "1",
   },
   {
     image: productImage,
@@ -19,6 +20,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "2",
   },
   {
     image: productImage,
@@ -26,6 +28,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "3",
   },
   {
     image: productImage,
@@ -33,6 +36,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "4",
   },
   {
     image: productImage,
@@ -40,6 +44,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "5",
   },
   {
     image: productImage,
@@ -47,6 +52,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "6",
   },
   {
     image: productImage,
@@ -54,6 +60,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "7",
   },
   {
     image: productImage,
@@ -61,6 +68,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "8",
   },
   {
     image: productImage,
@@ -68,6 +76,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "9",
   },
   {
     image: productImage,
@@ -75,6 +84,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "10",
   },
   {
     image: productImage,
@@ -82,6 +92,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "11",
   },
   {
     image: productImage,
@@ -89,6 +100,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "12",
   },
   {
     image: productImage,
@@ -96,6 +108,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "13",
   },
   {
     image: productImage,
@@ -103,6 +116,7 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
+    slug: "14",
   },
   {
     image: productImage,
@@ -110,80 +124,11 @@ const products = [
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
+    slug: "15",
   },
 ];
 
 function AllProducts() {
-  // const totalPages = Math.ceil(products.length / 10);
-
-  // function onClickPage(paginateData: any): void {
-  //   // ReactPaginate store page index of array
-  //   onPageChange(paginateData.selected + 1);
-  // }
-
   return (
     <>
       <div className="flex items-start">
@@ -196,16 +141,6 @@ function AllProducts() {
                 <Product key={idx} product={product} />
               ))}
           </div>
-          {/* <ReactPaginate
-          breakLabel="..."
-          nextLabel=">"
-          onPageChange={onClickPage}
-          pageRangeDisplayed={5}
-          marginPagesDisplayed={1}
-          pageCount={products.length}
-          previousLabel="<"
-          renderOnZeroPageCount={null}
-        /> */}
         </div>
       </div>
     </>

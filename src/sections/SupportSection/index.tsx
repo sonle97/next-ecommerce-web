@@ -8,7 +8,7 @@ function SupportSection() {
           <div className="flex items-center">
             <Image src="/sp_home_icon.png" alt="icon" width={60} height={60} />
             <div className="ml-4">
-              <h3 className="text-blue-1 mb-2 font-semibold text-lg capitalize">
+              <h3 className="text-blue-1 mb-[2px] font-semibold text-lg capitalize">
                 Sản phẩm cập nhật liên tục
               </h3>
               <p>
@@ -21,7 +21,7 @@ function SupportSection() {
           <div className="flex items-center">
             <Image src="/sp_car_icon.jpg" alt="icon" width={60} height={60} />
             <div className="ml-4">
-              <h3 className="text-blue-1 mb-2 font-semibold text-lg capitalize">
+              <h3 className="text-blue-1 mb-[2px] font-semibold text-lg capitalize">
                 Ship hàng siêu tốc
               </h3>
               <p>Giao hàng siêu nhanh nội thành HCM chỉ trong 2H.</p>
@@ -37,7 +37,7 @@ function SupportSection() {
               height={60}
             />
             <div className="ml-4">
-              <h3 className="text-blue-1 mb-2 font-semibold text-lg capitalize">
+              <h3 className="text-blue-1 mb-[2px] font-semibold text-lg capitalize">
                 Đổi trả miễn phí
               </h3>
               <p>

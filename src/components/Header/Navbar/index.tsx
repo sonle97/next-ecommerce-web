@@ -22,12 +22,12 @@ const Navbar = () => {
     <nav className="border border-gray-3 shadow-navbar sticky top-0 bg-white z-10">
       <div className="container flex items-center">
         <Categories />
-        <div className="flex items-center gap-5 text-blue-1 ml-6">
+        <div className="flex items-center gap-6 text-blue-1 ml-6 font-medium">
           {NavbarList.map((item, idx) => (
             <Link
               key={idx}
               href={item.url}
-              className={`hover:text-red-1 capitalize ${
+              className={`hover:text-red-1 ${
                 pathName == item.url ? "active" : ""
               }`}
             >

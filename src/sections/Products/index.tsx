@@ -1,6 +1,7 @@
 import Product from "@/components/Product";
 import TitleCategory from "@/components/TitleCategory";
 import productImage from "@/images/product1.jpg";
+import { products } from "../AllProducts";
 
 const data = [
   {
@@ -8,256 +9,28 @@ const data = [
       name: "Máy câu cá",
       url: "",
     },
-    products: [
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-    ],
+    products,
   },
   {
     category: {
       name: "Máy câu cá",
       url: "",
     },
-    products: [
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-    ],
+    products,
   },
   {
     category: {
       name: "Máy câu cá",
       url: "",
     },
-    products: [
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-    ],
+    products,
   },
   {
     category: {
       name: "Máy câu cá",
       url: "",
     },
-    products: [
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-      {
-        image: productImage,
-        name: "Mồi Cá Giả TD70 Lure Star",
-        oldPrice: "2.000.000",
-        newPrice: "1.650.000",
-        brand: "Kuchen",
-      },
-    ],
+    products,
   },
 ];
 
@@ -271,7 +44,7 @@ const ProductList = () => {
             <div className="flex items-start gap-x-6 gap-y-8 flex-wrap">
               {item.products &&
                 item.products.map((product, idx) => (
-                  <Product product={product} key={idx}/>
+                  <Product product={product} key={idx} />
                 ))}
             </div>
           </section>
