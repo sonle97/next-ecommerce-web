@@ -1,0 +1,14 @@
+.all-products{
+  .product {
+    width: calc(100% / 2 - 5px);
+
+    @media screen and (min-width: 550px) {
+      width: calc(100% / 2 - 15px);
+    }
+
+    @media screen and (min-width: 768px) {
+      width: calc(100% / 3 - 14px);
+    }
+  }
+}
+

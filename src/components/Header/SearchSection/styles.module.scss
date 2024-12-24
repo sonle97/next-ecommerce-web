@@ -1,42 +1,42 @@
 .search_bar {
-  select,
+  border: 2px solid #3078a6;
+  border-radius: 6px;
+
   input {
     height: 40px;
     box-shadow: 0px 0px 0px grey;
-    border: 1px solid #276788;
-    border-radius: 5px;
+    font-weight: 400;
     color: #333333;
     font-size: 15px;
-  }
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 
-  select:focus,
-  input:focus {
-    outline: none;
-  }
-
-  select {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    &:focus {
+      outline: none;
+      border: none;
+    }
   }
 
   input {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
     padding: 10px;
-    width: 400px;
+    width: 300px;
+    @media  screen and (min-width: 900px) {
+      width: 350px;
+    }
+
+    @media  screen and (min-width: 1024px) {
+      width: 400px;
+    }
   }
 
   button {
     width: 65px;
     height: 40px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background-color: #276788;
-    border: 1px solid #276788;
+    background-color: #3078a6;
   }
 
   button:hover {
-    background-color: #1f526d;
-    border-color: #1f526d;
+    background-color: #3078a6;
+    border-color: #3078a6;
   }
 }

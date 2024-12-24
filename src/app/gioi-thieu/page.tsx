@@ -1,57 +1,164 @@
+import Image from "next/image";
+
 export default function Intro() {
   return (
-    <main className="container">
-      <div className="page-wrapper my-6">
-        <div className="heading-page">
-          <h1>Về Chúng Tôi</h1>
-        </div>
-        <div className="wrapbox-content-page">
-          <div className="content-page ">
-            <p>
-              <span>
-                Thế Kỷ Xanh chuyên cung cấp các giải pháp về sản phẩm bao bì
-                nhựa, bao bì giấy cao cấp có in thông tin thương hiệu thường
-                được sử dụng trong các chuỗi nhà hàng, cafe, trà sữa, cháo dinh
-                dưỡng .v.v
-              </span>
-            </p>
-            <p>
-              <span>
-                Với đội ngũ nhân viên trẻ, đầy nhiệt huyết và các quản lý nhiều
-                năm kinh nghiệm trong sản xuất và kinh doanh chúng tôi{" "}
-                <strong>CAM KẾT</strong> sẽ mang đến khách hàng và ngươi tiêu
-                dùng những sản phẩm với chất lượng cao cấp nhất, phục vụ chu đáo
-                với chi phí phù hợp nhất.
-              </span>
-            </p>
-            <p>
-              <span>
-                Sản phẩm của Thế Kỷ Xanh được khách hàng trong và ngoài nước ưa
-                chuộng và có uy tín trên thị trường với các sản phẩm như ly
-                nhựa, ly giấy, nắp nhựa, dao, muỗng, nĩa… được sản xuất từ nhựa
-                PET, PP, PS, PE, PLA.&nbsp;
-              </span>
-            </p>
-            <p>
-              <span>
-                Song song với chất lượng, chúng tôi luôn đặt vấn đề sức khỏe của
-                người tiêu dùng lên hàng đầu. Tất cả sản phẩm được sản xuất bằng
-                công nghệ thân thiện với môi trường, và được kiểm định đạt chứng
-                chỉ ISO 9001:2015, HACCP trong sản xuất và BRC trong đóng gói.
-              </span>
-            </p>
-            <p>
-              <span>
-                Với phương châm <strong>TIN CẬY - TẬN TÂM - TINH</strong>{" "}
-                <strong>TẾ</strong>.<strong>&nbsp;</strong>Đến với Thế Kỷ Xanh,
-                khách hàng sẽ tìm được đối tác TIN CẬY, phục vụ TẬN TÂM, sản
-                phẩm TINH TẾ. Lợi ích của khách hàng luôn được xem là tiêu chí
-                tiên quyết và cũng là triết lý kinh doanh của Thế Kỷ Xanh.
-              </span>
-              <br />
-            </p>
+    <main>
+      <Image
+        src="/images/bao-ve-moi-truong.png"
+        alt="ly-xanh-73"
+        width={1920}
+        height={500}
+        className="max-w-full max-h-[500px] object-cover object-center"
+      />
+
+      <div
+        className="bg-cover bg-center bg-no-repeat "
+        style={{
+          backgroundImage: "url(/images/background-gioithieu.png)",
+        }}
+      >
+        <section className="container px-4">
+          <p className="text-[24px] text-center font-bold text-green-4 mb-8 sm:text-[40px] text-[35px] font-[cursive]">
+            LY XANH
+          </p>
+
+          <h2 className="text-main sm:text-left text-center sm-[text-25px] text-[20px] sm:[mb-8] mb-4">
+            LỊCH SỬ PHÁT TRIỂN
+          </h2>
+          <p className="mb-4">
+            LY XANH chuyên thiết kế và cung cấp các sản phẩm bao bì thực phẩm
+            cho ngành thức ăn nhanh. Ly Xanh có nhiều năm kinh nghiệm sản xuất
+            và cung cấp một số mặt hàng bao bì ra thị trường quốc tế. Hiện nay,
+            chúng tôi mở rộng kinh doanh tất cả các sản phẩm bao bì và phục vụ
+            nhu cầu trong nước.
+          </p>
+          <p className="lg:mb-[70px] mb-[40px]">
+            Sau 5 năm hoạt động, Ly Xanh dần khẳng định vị thế của mình trên thị
+            trường với hơn 300 mã sản phẩm cho 10,000 khách hàng ở khắp cả nước.
+          </p>
+          <div className="flex items-center justify-between lg:flex-row flex-col-reverse">
+            <div className="lg:mr-10 lg:pr-4">
+              <p className="mb-4">
+                <strong>Đối với khách hàng:</strong> Cung cấp cho các nhà hàng,
+                quán ăn khắp cả nước tiếp cận với dòng sản phẩm đẹp, hiện đại,
+                thân thiện môi trường với giá thành tiết kiệm và hợp lý nhất.
+                Với sản lượng tăng qua các năm, chúng tôi mong muốn giảm giá
+                thành cho khách hàng. Chúng tôi cũng mong muốn cùng đồng hành
+                với các nhà hàng, quán ăn, các chuỗi như những người bạn thân
+                thiết – cùng thực hiện các dự án xã hội, mang những điều tốt đẹp
+                hơn cho cuộc sống.
+              </p>
+
+              <p className="mb-4">
+                <strong>Đối với ngành nghề:</strong> Cung cấp cho các nhà hàng,
+                quán ăn khắp cả nước tiếp cận với dòng sản phẩm đẹp, hiện đại,
+                thân thiện môi trường với giá thành tiết kiệm và hợp lý nhất.
+                Với sản lượng tăng qua các năm, chúng tôi mong muốn giảm giá
+                thành cho khách hàng. Chúng tôi cũng mong muốn cùng đồng hành
+                với các nhà hàng, quán ăn, các chuỗi như những người bạn thân
+                thiết – cùng thực hiện các dự án xã hội, mang những điều tốt đẹp
+                hơn cho cuộc sống.
+              </p>
+            </div>
+            <div
+              className="lg:w-[300px] lg:min-w-[300px] lg:h-[300px] sm:w-[200px] sm:min-w-[200px] sm:h-[200px] 
+                w-[200px] min-w-[200px] h-[70px] p-4
+                font-bold font-[cursive] rounded-full lg:text-[50px] sm:text-[35px] text-[30px] bg-white text-green-4 
+                flex items-center justify-center shadow-product-item text-center lg:mb-0 mb-6"
+            >
+              Tầm nhìn
+            </div>
           </div>
-        </div>
+
+          <div className="flex items-center justify-between lg:flex-row flex-col lg:mt-10 mt-6">
+            <div
+              className="lg:w-[300px] lg:min-w-[300px] lg:h-[300px] sm:w-[200px] sm:min-w-[200px] sm:h-[200px] 
+                w-[200px] min-w-[200px] h-[70px] p-4
+                font-bold font-[cursive] rounded-full lg:text-[50px] sm:text-[35px] text-[30px] bg-white text-green-4 
+                flex items-center justify-center shadow-product-item text-center lg:mb-0 mb-6"
+            >
+              Sứ mệnh
+            </div>
+            <div className="lg:ml-10 lg:pl-4">
+              <p className="mb-4">
+                <strong>Sản phẩm: </strong>Cung cấp các mẫu bao bì thực phẩm
+                dùng 1 lần thân thiện môi trường đến với khách hàng.
+              </p>
+
+              <p className="mb-4">
+                <strong>Khách hàng: </strong>Mang những giá trị tốt đẹp tới công
+                nhân viên, khách hàng, người sử dụng.
+              </p>
+            </div>
+          </div>
+
+          <h1 className="lg:mt-10 mt-6 font-[cursive] text-center text-green-4 lg:text-[55px] sm:text-[35px] text-[30px]">
+            GIÁ TRỊ CỐT LÕI
+          </h1>
+
+          <div className="flex items-center justify-between lg:gap-8 gap-4 mt-8 mb-6 sm:flex-row flex-col">
+            <div className="text-center">
+              <Image
+                src="/images/infomations/icon-1.png"
+                alt="icon"
+                width={85}
+                height={85}
+                className="mx-auto"
+              />
+              <p className="font-bold mt-3">
+                Nguyên vật liệu thân thiện môi trường
+              </p>
+            </div>
+            <div className="text-center">
+              <Image
+                src="/images/infomations/icon-2.png"
+                alt="icon"
+                width={85}
+                height={85}
+                className="mx-auto"
+              />
+              <p className="font-bold mt-3">
+                Sản xuất theo quy trình chất lượng
+              </p>
+            </div>
+            <div className="text-center">
+              <Image
+                src="/images/infomations/icon-3.webp"
+                alt="icon"
+                width={85}
+                height={85}
+                className="mx-auto"
+              />
+              <p className="font-bold mt-3">
+                Phục vụ khách hàng nhanh, nhiệt tình
+              </p>
+            </div>
+            <div className="text-center">
+              <Image
+                src="/images/infomations/icon-4.png"
+                alt="icon"
+                width={85}
+                height={85}
+                className="mx-auto"
+              />
+              <p className="font-bold mt-3">
+                Cam kết mức giá cả tốt nhất cho khách hàng
+              </p>
+            </div>
+            <div className="text-center">
+              <Image
+                src="/images/infomations/icon-5.png"
+                alt="icon"
+                width={85}
+                height={85}
+                className="mx-auto"
+              />
+              <p className="font-bold mt-3">
+                Đồng hành cùng sự phát triển của khách hàng
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );

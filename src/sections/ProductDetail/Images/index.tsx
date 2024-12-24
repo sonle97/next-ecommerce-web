@@ -1,23 +1,23 @@
-"use client";
-import { useState } from "react";
+'use client';
+import { useState } from 'react';
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
 
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import "./styles.scss";
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import './styles.scss';
 
 const images = [
-  "https://swiperjs.com/demos/images/nature-1.jpg",
-  "https://swiperjs.com/demos/images/nature-2.jpg",
-  "https://swiperjs.com/demos/images/nature-3.jpg",
-  "https://swiperjs.com/demos/images/nature-4.jpg",
-  "https://swiperjs.com/demos/images/nature-5.jpg",
+  'https://swiperjs.com/demos/images/nature-1.jpg',
+  'https://swiperjs.com/demos/images/nature-2.jpg',
+  'https://swiperjs.com/demos/images/nature-3.jpg',
+  'https://swiperjs.com/demos/images/nature-4.jpg',
+  'https://swiperjs.com/demos/images/nature-5.jpg',
 ];
 
 const Images = () => {
@@ -36,7 +36,7 @@ const Images = () => {
           <SwiperSlide key={idx}>
             <img
               src={img}
-              className="h-[370px] w-full object-cover rounded-[8px]"
+              className="md:h-[370px] sm:h-[330px] h-[280px] w-full object-cover rounded-[8px]"
             />
           </SwiperSlide>
         ))}

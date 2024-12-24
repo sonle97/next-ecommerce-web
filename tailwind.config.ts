@@ -10,20 +10,10 @@ const config = {
   ],
   prefix: "",
   theme: {
-    container: {
-      center: true,
-      screens: {
-        "2xl": "1320px",
-        xl: "1140px",
-        lg: "960px",
-        md: "720px",
-        sm: "540px",
-        sx: "100%",
-      },
-    },
     extend: {
       colors: {
         transparent: "transparent",
+        main: "#3078a6",
 
         white: "#FFFFFF",
         black: {
@@ -44,8 +34,9 @@ const config = {
           1: "#b7d847",
           2: "#7a9c59",
           3: "#93c63e",
-          4: "#8cc63f",
+          4: "#00a859",
           5: "#009911",
+          6: "#65b741",
         },
         gray: {
           default: "#808080",
@@ -75,23 +66,10 @@ const config = {
       width: {
         "product-item": "calc(100% / 3 - 10px);",
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
+      translate: {},
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 } satisfies Config;
 
 export default config;

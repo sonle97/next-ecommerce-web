@@ -1,18 +1,24 @@
-import HeroSection from "@/sections/HeroSection";
-import SupportSection from "@/sections/SupportSection";
-import SellingSection from "@/sections/SellingSection";
-import Products from "@/sections/Products";
-import RegisterPromotions from "@/sections/RegisterPromotions";
-import NewsSection from "@/sections/News";
-import PartnerSection from "@/sections/Partner";
+import HeroSection from "@/sections/HomePage/HeroSection";
+import SupportSection from "@/sections/HomePage/SupportSection";
+import Categories from "@/sections/HomePage/Categories";
+import Products from "@/sections/HomePage/Products";
+import RegisterPromotions from "@/sections/HomePage/RegisterPromotions";
+import NewsSection from "@/sections/HomePage/News";
+import PartnerSection from "@/sections/HomePage/Partner";
+import AboutUs from "@/sections/HomePage/AboutUs";
+import WhyChooseUs from "@/sections/HomePage/WhyChooseUs";
+
+import "aos/dist/aos.css";
 
 export default function Home() {
   return (
     <main className="container">
       <HeroSection />
       <SupportSection />
-      <SellingSection />
+      <Categories />
+      <AboutUs />
       <Products />
+      <WhyChooseUs />
       <RegisterPromotions />
       <NewsSection />
       <PartnerSection />

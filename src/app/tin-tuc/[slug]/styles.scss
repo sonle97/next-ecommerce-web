@@ -1,0 +1,32 @@
+.new-detail-container {
+  ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+    
+  }
+
+  #toc-container {
+    background: #f3f8fe;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    border: none;
+    .toc-title {
+      color: #1b74e7;
+      font-size: 21px;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style: decimal;
+      li {
+        a {
+          &:hover {
+            color: #1b74e7;
+          }
+        }
+      }
+    }
+  }
+}

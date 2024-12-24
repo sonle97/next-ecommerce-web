@@ -5,7 +5,7 @@ import TopBar from "./TopBar";
 function Header() {
   return (
     <>
-      <header className="w-full bg-white">
+      <header className="w-full bg-white lg:block hidden">
         <TopBar />
         <SearchSection />
       </header>

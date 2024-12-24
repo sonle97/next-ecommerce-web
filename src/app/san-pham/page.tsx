@@ -1,15 +1,16 @@
-import AllProducts from "@/sections/AllProducts";
-import { Metadata } from "next";
+import { Metadata } from 'next';
+
+import AllProducts from '@/sections/AllProducts';
 
 export const metadata: Metadata = {
-  title: "Sản phẩm",
-  description: "Tất cả các sản phẩm của Ly xanh",
-  icons: "ly-icon.png",
+  title: 'Sản phẩm',
+  description: 'Tất cả các sản phẩm của Ly xanh',
+  icons: 'ly-icon.png',
 };
 
 export default function Products() {
   return (
-    <main className="container">
+    <main className='container'>
       <AllProducts />
     </main>
   );

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
+import React, { useState } from 'react';
+import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md';
 
 const content = `Thật tiện lợi khi sử dụng hệ tủ đồ bằng nhôm kính, chẳng hạn như tủ thuốc,
     tủ kệ chứa điện thoại, hay các tủ kệ cho các cửa hàng thời trang. Với sản
@@ -51,15 +51,15 @@ const ReadMore = ({ content }: { content: string }) => {
   };
   return (
     <>
-      <div className={`${isReadMore ? "" : "h-[300px]"} overflow-hidden`}>
+      <div className={`${isReadMore ? '' : 'h-[300px]'} overflow-hidden`}>
         {content}
       </div>
 
       <div
         onClick={toggleReadMore}
-        className="cursor-pointer text-blue-1 text-center relative h-[40px] leading-[40px]"
+        className='cursor-pointer text-main text-center relative h-[40px] leading-[40px]'
       >
-        <span className="flex items-center justify-center">
+        <span className='flex items-center justify-center'>
           {!isReadMore ? (
             <>
               Xem thêm <MdArrowDropDown size={30} />
@@ -73,7 +73,7 @@ const ReadMore = ({ content }: { content: string }) => {
 
         {!isReadMore && (
           <div
-            className="h-[40px] absolute -top-[35px] w-full"
+            className='h-[40px] absolute -top-[35px] w-full'
             style={{
               background: `linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))`,
             }}

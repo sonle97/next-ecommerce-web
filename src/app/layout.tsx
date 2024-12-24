@@ -1,19 +1,20 @@
-import Header from "@/components/Header";
-import "./globals.css";
-import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
-import ButtonScrollOnTop from "@/components/ButtonScrollOnTop";
-import Footer from "@/components/Footer";
-import { cn } from "@/lib/utils";
+import Header from '@/components/Header';
+import './globals.css';
+import './app.scss';
+import type { Metadata } from 'next';
+import { Inter as FontSans } from 'next/font/google';
+import ButtonScrollOnTop from '@/components/ButtonScrollOnTop';
+import Footer from '@/components/Footer';
+import { cn } from '@/lib/utils';
 
 const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
+  subsets: ['latin'],
+  variable: '--font-sans',
 });
 export const metadata: Metadata = {
-  title: "Ly xanh",
-  description: "Trang chủ ly xanh 73",
-  icons: "ly-icon.png",
+  title: 'Ly xanh',
+  description: 'Trang chủ ly xanh 73',
+  icons: 'ly-icon.png',
 };
 
 export default function RootLayout({
@@ -25,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          'min-h-screen bg-background font-sans antialiased',
           fontSans.variable
         )}
       >

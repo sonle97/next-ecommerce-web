@@ -12,120 +12,54 @@ export interface NavBarProps {
 
 export const navBars: NavBarProps[] = [
   {
-    title: "Sản phẩm bán chạy",
-    url: "/",
-    isHot: true,
+    title: 'Cần câu cá các loại',
+    url: '/',
   },
   {
-    title: "Cần câu cá các loại",
-    url: "/",
+    title: 'Cần câu cá các loại',
+    url: '/',
     subTab: [
       {
-        title: "Cần câu cá lóc",
-        url: "/",
+        title: 'Cần câu cá lóc',
+        url: '/',
       },
       {
-        title: "Cần câu cá lóc",
-        url: "/",
+        title: 'Cần câu cá lóc',
+        url: '/',
       },
       {
-        title: "Cần câu cá lóc",
-        url: "/",
+        title: 'Cần câu cá lóc',
+        url: '/',
       },
     ],
   },
   {
-    title: "Cần câu cá các loại",
-    url: "/",
-    subTab: [
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-    ],
+    title: 'Cần câu cá các loại',
+    url: '/',
   },
   {
-    title: "Cần câu cá các loại",
-    url: "/",
-    subTab: [
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-    ],
+    title: 'Cần câu cá các loại',
+    url: '/',
   },
   {
-    title: "Cần câu cá các loại",
-    url: "/",
-    subTab: [
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-    ],
+    title: 'Cần câu cá các loại',
+    url: '/',
   },
   {
-    title: "Cần câu cá các loại",
-    url: "/",
-    subTab: [
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-    ],
+    title: 'Cần câu cá các loại',
+    url: '/',
+  },
+
+  {
+    title: 'Phụ kiện khác',
+    url: '/',
   },
   {
-    title: "Cần câu cá các loại",
-    url: "/",
-    subTab: [
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-      {
-        title: "Cần câu cá lóc",
-        url: "/",
-      },
-    ],
+    title: 'Phụ kiện khác',
+    url: '/',
   },
   {
-    title: "Phụ kiện khác",
-    url: "/",
+    title: 'Phụ kiện khác',
+    url: '/',
   },
 ];

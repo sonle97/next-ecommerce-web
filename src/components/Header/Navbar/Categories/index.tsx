@@ -11,21 +11,20 @@ import styles from "./styles.module.scss";
 import { useWindowScrollPositions } from "@/hooks/useWindowScrollPositions";
 
 function Categories() {
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
   const pathname = usePathname();
   const { scrollY } = useWindowScrollPositions();
   const isShowButtonScrollToTop = scrollY > 200;
 
   const isHomePage = pathname === "/";
-  const isProductPage = pathname === "/san-pham";
 
   useEffect(() => {
     setIsCategoriesOpen(isHomePage);
   }, [isHomePage]);
 
   useEffect(() => {
-    if (isHomePage || isProductPage) {
-      if (isShowButtonScrollToTop && isHomePage) {
+    if (isHomePage) {
+      if (isShowButtonScrollToTop) {
         setIsCategoriesOpen(false);
       } else {
         setIsCategoriesOpen(true);
@@ -33,20 +32,20 @@ function Categories() {
     } else {
       setIsCategoriesOpen(false);
     }
-  }, [isShowButtonScrollToTop, isHomePage, isProductPage]);
+  }, [isShowButtonScrollToTop, isHomePage]);
 
   return (
-    <div className="relative w-1/4">
+    <div className="relative w-1/4 h-full lg:block hidden">
       <div
-        className="flex items-center bg-blue-1 text-white pl-4 py-4 cursor-pointer"
+        className="flex items-center h-full bg-main text-white px-4 py-4 cursor-pointer capitalize"
         onClick={() => {
           isHomePage && !isShowButtonScrollToTop
             ? null
             : setIsCategoriesOpen(!isCategoriesOpen);
         }}
       >
-        <FaBars className="mr-2" />
-        <span className="uppercase font-bold">Danh mục sản phẩm</span>
+        <FaBars className="mr-3" />
+        <span className="font-medium text-base">Danh mục sản phẩm</span>
       </div>
       {isCategoriesOpen && (
         <ul className={styles.nav_categories}>
@@ -75,7 +74,7 @@ function Categories() {
                 {nav.subTab && nav.subTab.length && (
                   <ul className={styles.subMenu}>
                     {nav.subTab.map((subNav: Tab, idx: number) => (
-                      <li key={idx}>
+                      <li key={idx} className="cursor-pointer">
                         <Link href={subNav.url}>{subNav.title}</Link>
                       </li>
                     ))}

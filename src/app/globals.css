@@ -9,12 +9,56 @@ body {
   color: #282828;
 }
 
-.active {
-  color: #ed1c24;
+a.active {
+  color: #eff23c;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
 }
 
 section {
   padding: 20px 0px;
+}
+
+@media screen and (min-width: 1024px) {
+  section {
+    padding: 30px 0px;
+  }
 }
 
 h1 {
@@ -22,10 +66,11 @@ h1 {
 }
 
 h2 {
-  @apply text-[25px] text-blue-1 font-bold mb-8 uppercase;
+  @apply lg:text-[25px] sm:text-[22px] text-main font-bold mb-8 uppercase text-[20px];
 }
+
 h3 {
-  @apply mb-[12px] font-bold text-[17px] uppercase;
+  @apply font-bold lg:text-[18px] sm:text-[16px] uppercase text-[15px];
 }
 
 a,
@@ -63,4 +108,40 @@ select {
   background-size: 24px;
   padding: 0.5rem;
   border-radius: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -1,9 +1,11 @@
-import React from "react";
-
-import productImage from "@/images/product1.jpg";
-
 import Product from "@/components/Product";
-import Breadcrumb from "@/components/Breadcrumb";
+
+import "./styles.scss";
+import Pagination from "@/components/Pagination";
+import TitleSection from "@/components/TitleSection";
+import Categories from "./Categories";
+
+const productImage = "/images/products/product-image.jpg";
 
 export const products = [
   {
@@ -54,70 +56,16 @@ export const products = [
     brand: "Kuchen",
     slug: "6",
   },
+
   {
     image: productImage,
     name: "Mồi Cá Giả TD70 Lure Star",
     oldPrice: "2.000.000",
     newPrice: "1.650.000",
     brand: "Kuchen",
-    slug: "7",
+    slug: "15",
   },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-    slug: "8",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-    slug: "9",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-    slug: "10",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-    slug: "11",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-    slug: "12",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-    slug: "13",
-  },
-  {
-    image: productImage,
-    name: "Mồi Cá Giả TD70 Lure Star",
-    oldPrice: "2.000.000",
-    newPrice: "1.650.000",
-    brand: "Kuchen",
-    slug: "14",
-  },
+
   {
     image: productImage,
     name: "Mồi Cá Giả TD70 Lure Star",
@@ -130,20 +78,24 @@ export const products = [
 
 function AllProducts() {
   return (
-    <>
-      <div className="flex items-start">
-        <div className="w-1/4 mr-4"></div>
-        <div className="w-3/4">
-          <Breadcrumb breadcrumb="" />
-          <div className="flex items-start gap-x-6 gap-y-8 flex-wrap">
+    <section>
+      <TitleSection title="Sản phẩm" isLine={false} />
+
+      <div className="flex items-start lg:flex-row flex-col">
+        <div className="lg:w-1/4 lg:mr-4 lg:mb-0 relative w-full mb-8">
+          <Categories />
+        </div>
+        <div className="lg:w-3/4 w-full">
+          <div className="flex items-start items-center min-[550px]:justify-start justify-center sm:gap-[20px] gap-[10px] flex-wrap all-products">
             {products &&
               products.map((product, idx) => (
                 <Product key={idx} product={product} />
               ))}
           </div>
+          <Pagination />
         </div>
       </div>
-    </>
+    </section>
   );
 }
 export default AllProducts;
