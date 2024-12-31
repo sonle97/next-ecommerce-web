@@ -1,14 +1,17 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import Modal, { ModalProps } from "@/components/ui/Modal";
-import productImage from "@/images/product1.jpg";
-import { Input, TextArea } from "@/components/ui/Input";
+import { useRef } from 'react';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import Modal, { ModalProps } from '@/components/ui/Modal';
+import productImage from '@/images/product1.jpg';
+import { Input, TextArea } from '@/components/ui/Input';
 
 interface BuyProductModalProps extends ModalProps {}
 
 const BuyProductModal = (props: BuyProductModalProps) => {
+  const modalRef = useRef(null);
+
   return (
-    <Modal {...props}>
+    <Modal {...props} ref={modalRef}>
       <div className="flex items-start">
         <div className="w-1/2 pr-3">
           <div className="flex items-center">
@@ -50,7 +53,7 @@ const BuyProductModal = (props: BuyProductModalProps) => {
           </p>
 
           <p className="mt-6 flex items-center justify-between">
-            <span>Tổng cộng:</span>{" "}
+            <span>Tổng cộng:</span>{' '}
             <span className="font-bold text-xl ">8.000.000₫</span>
           </p>
         </div>

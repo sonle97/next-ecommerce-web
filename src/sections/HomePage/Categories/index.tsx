@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import Aos from "aos";
+import { useEffect } from 'react';
+import Aos from 'aos';
 
-import { CategoriesData, ICategoriesData } from "./data";
-import "./styles.scss";
-import CategoryItem from "./CategoryItem";
+import './styles.scss';
+import CategoryItem from './CategoryItem';
+import { categories, ICategories } from '@/config/data/categories';
 
 function Categories() {
   useEffect(function () {
@@ -20,7 +20,7 @@ function Categories() {
       >
         <b className="flex-1 h-[2px] bg-black-1 opacity-10" />
         <span className="mx-4">
-          Danh mục sản phẩm{" "}
+          Danh mục sản phẩm{' '}
           <img src="/title-main.png" alt="icon" className="mx-auto mt-1" />
         </span>
 
@@ -28,9 +28,11 @@ function Categories() {
       </h2>
 
       <div className="flex items-start justify-start xl:gap-[30px] lg:gap-[25px] gap-[15px] flex-wrap mb-[20px]">
-        {CategoriesData.map((category: ICategoriesData, index: number) => (
-          <CategoryItem key={index} category={category} dataAos="fade-up" />
-        ))}
+        {categories
+          .filter((category) => !category.isHideOnPage)
+          .map((category: ICategories, index: number) => (
+            <CategoryItem key={index} category={category} dataAos="fade-up" />
+          ))}
       </div>
 
       <section className="flex items-center gap-x-4 pb-0">

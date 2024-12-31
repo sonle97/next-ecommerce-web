@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-import { IoCheckmarkDoneSharp } from "react-icons/io5";
+import Image from 'next/image';
+import Link from 'next/link';
+import { IoCheckmarkDoneSharp } from 'react-icons/io5';
 
-import "./styles.scss";
-import TitleSection from "@/components/TitleSection";
+import './styles.scss';
+import TitleSection from '@/components/TitleSection';
 
 const PrintingServicesPage = () => {
   return (

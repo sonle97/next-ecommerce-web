@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import DescriptionProduct from "./DescriptionProduct";
-import ReviewsProduct from "./ReviewsProduct";
+import DescriptionProduct from './DescriptionProduct';
+import ReviewsProduct from './ReviewsProduct';
 
-import InfoPayments from "./InfoPayments";
-import "./styles.scss";
+import InfoPayments from './InfoPayments';
+import './styles.scss';
 
 export const TypeTab = {
-  DescriptionProduct: "description-product",
-  ReviewsProduct: "reviews-product",
-  InfoPayments: "info-payments",
+  DescriptionProduct: 'description-product',
+  ReviewsProduct: 'reviews-product',
+  InfoPayments: 'info-payments',
 };
 
 const TAB_INDEX = {
@@ -23,15 +23,15 @@ const TAB_INDEX = {
 const TabItems = [
   {
     id: TAB_INDEX.DescriptionProductTab,
-    title: "Mô tả",
+    title: 'Mô tả',
   },
   {
     id: TAB_INDEX.ReviewsProductTab,
-    title: "Đánh giá",
+    title: 'Đánh giá',
   },
   {
     id: TAB_INDEX.InfoPaymentstab,
-    title: "Thông tin thanh toán",
+    title: 'Thanh toán',
   },
 ];
 
@@ -50,8 +50,8 @@ const TabIndex: React.FC<any> = (props: TabIndexProps) => {
       onClick={onItemClicked}
       className={`
         flex items-center justify-around sm:justify-center cursor-pointer text-base font-medium sm:px-16 ${
-          className ? className : ""
-        } ${isActive ? "active" : ""}`}
+          className ? className : ''
+        } ${isActive ? 'active' : ''}`}
     >
       <div className="font-bold">{title}</div>
     </div>
@@ -67,7 +67,7 @@ const Linked = () => {
   switchForm;
   return (
     <div className="detail-product-wrapper">
-      <div className="flex items-center">
+      <div className="flex items-center gap-1">
         {TabItems.map(({ id, title }) => (
           <TabIndex
             key={id}

@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
 
 const InfoPayments = () => (
   <div className="flex items-start sm:gap-16 gap-4 mt-2 sm:flex-row flex-col">
@@ -12,7 +11,7 @@ const InfoPayments = () => (
         - Số tài khoản: <b>0381000597930</b>
       </p>
       <p>
-        - Chi nhánh: <b>Vietcombank Thủ Đức</b>{' '}
+        - Chi nhánh: <b>Vietcombank Thủ Đức</b>{" "}
       </p>
       <Image
         src="/qr_bank.jpg"
@@ -28,7 +27,7 @@ const InfoPayments = () => (
         - Tên: <b>Lê Quang Sơn</b>
       </p>
       <p>
-        - Số điện thoại: <b>0347366345</b>
+        - Số điện thoại: <b>0347.366.345</b>
       </p>
       <br />
       <Image

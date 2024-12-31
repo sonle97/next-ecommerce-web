@@ -8,9 +8,9 @@
   align-items: center;
   justify-content: center;
   z-index: 2000;
-  max-width: 750px;
+  max-width: 650px;
   width: 100%;
-  margin: 40px auto;
+  margin: 0px auto;
   visibility: hidden;
   opacity: 0;
 
@@ -40,22 +40,16 @@
     outline: 0;
   }
 
-  .close {
-    position: absolute;
-    top: 15px;
-    right: 17px;
-    z-index: 99;
-  }
-
   .box-dialog {
     z-index: 1050;
     width: 100%;
-    padding: 50px 20px 40px;
+    padding: 30px 40px 40px;
     background-color: #fefefe;
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     position: relative;
     max-height: 100%;
+    font-size: 15px;
 
     .content-modal {
       overflow-y: auto;
@@ -78,5 +72,13 @@
         background: #90a4ae;
       }
     }
+  }
+
+  @media screen and (max-width: 767px) {
+    .box-dialog {
+      padding: 20px;
+      margin: 0 15px;
+    }
+    
   }
 }

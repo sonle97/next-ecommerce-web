@@ -6,11 +6,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  color: #282828;
-}
-
-a.active {
-  color: #eff23c;
+  color: #212529;
 }
 
 .container {
@@ -66,7 +62,7 @@ h1 {
 }
 
 h2 {
-  @apply lg:text-[25px] sm:text-[22px] text-main font-bold mb-8 uppercase text-[20px];
+  @apply lg:text-[25px] sm:text-[22px] text-main font-bold mb-8 text-[20px];
 }
 
 h3 {
@@ -95,7 +91,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 

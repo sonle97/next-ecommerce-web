@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { Navigation, Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import Aos from "aos";
+import { useEffect } from 'react';
+import { Navigation, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import Aos from 'aos';
 
-import Product from "@/components/Product";
-import TitleCategory from "@/components/TitleCategory";
-import { products } from "../../AllProducts";
+import Product from '@/components/Product';
+import TitleCategory from '@/components/TitleCategory';
+import { products } from '@/config/data/products';
 
 const data = [
   {
     category: {
-      name: "Sản phẩm bán chạy",
-      url: "",
+      name: 'Sản phẩm bán chạy',
+      url: '/cua-hang',
     },
     products,
   },
   {
     category: {
-      name: "Sản phẩm mới",
-      url: "",
+      name: 'Sản phẩm mới',
+      url: '/cua-hang',
     },
     products,
   },

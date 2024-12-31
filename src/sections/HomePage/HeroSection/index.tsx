@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Image from 'next/image';
+import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
-import HeroBanner from "@/images/hero_banner.png";
-import "./styles.scss";
+import HeroBanner from '@/images/hero_banner.png';
+import './styles.scss';
 
 function Hero() {
   return (
@@ -33,8 +33,8 @@ function Hero() {
                 src={HeroBanner}
                 alt={`hero banner ${index}`}
                 width={500}
-                height={390}
-                className="lg:h-[390px] md:h-[320px] sm:h-[300px] h-280px w-full"
+                height={421}
+                className="lg:h-[421px] md:h-[350px] sm:h-[330px] h-300px w-full"
               />
             </SwiperSlide>
           ))}

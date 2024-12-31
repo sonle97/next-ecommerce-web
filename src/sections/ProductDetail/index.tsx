@@ -1,25 +1,37 @@
 import { FaSquareCheck } from 'react-icons/fa6';
-import { FaHandPointRight } from 'react-icons/fa';
+import Link from 'next/link';
+import { BsCart4 } from 'react-icons/bs';
+import { IProduct } from '@/config/data/products';
+import { categories } from '@/config/data/categories';
 
-import Images from './Images';
+import ImageProduct from './ImageProduct';
 import DescriptionTabs from './DescriptionTabs';
 import RelatedProducts from './RelatedProducts';
-import { IProductProps } from '@/components/Product';
-
 import './styles.scss';
+import AddToCart from '../../components/AddToCartButton';
 
-const ProductDetail = ({ product }: { product: IProductProps }) => {
+const ProductDetail = ({ product }: { product: IProduct }) => {
+  const category = categories.find(
+    (category) => category.id === product.categoryId
+  );
+
   return (
     <>
       <div className="mt-[35px] mb-4">
         <div className="flex items-start xl:flex-row flex-col">
           <div className="xl:w-1/2 w-full">
-            <Images />
+            <ImageProduct />
           </div>
           <div className="xl:w-1/2 xl:pl-10 w-full pl-0 xl:mt-0 mt-8">
             <p className="mb-2 flex items-center gap-2">
-              <FaSquareCheck className="text-[#ea9214]" />
-              Danh mục: <span className="font-medium">{product.brand}</span>
+              <FaSquareCheck className="text-green-4" size={20} />
+              Danh mục:{' '}
+              <Link
+                href={`/${category?.slug}`}
+                className="font-medium hover:underline"
+              >
+                {category?.title}
+              </Link>
             </p>
 
             <div className="mb-2 text-main text-[20px] font-bold">
@@ -30,24 +42,21 @@ const ProductDetail = ({ product }: { product: IProductProps }) => {
               Mã sản phẩm: <span className="font-semibold">{product.slug}</span>
             </p>
 
-            <div className="bg-[#eaeaea] rounded-[4px] px-4 py-2 flex items-center justify-between">
+            <div className="bg-[#eaeaea] rounded-[4px] px-3 py-2 flex items-center justify-between text-[15px]">
               <span>
-                Giá:{' '}
-                <span className="text-red-1 font-bold text-[16px]">
-                  {' '}
+                Thông tin giá:{' '}
+                <span className="text-red-1 font-bold text-[15px]">
                   Liên hệ
                 </span>
               </span>
-              <div className="flex items-center gap-2 cursor-pointer">
-                <FaHandPointRight className="text-main" size={20} />
-                <span className="font-bold hover:text-red-1 hover:underline">
-                  Thêm vào giỏ
-                </span>
-              </div>
+              <AddToCart product={product} text="Add to cart" />
             </div>
 
-            <div className="text-[#ea9214] font-bold text-[20px] my-2">
-              Gọi ngay: 0363409382
+            <div className="text-green-4 font-bold text-[20px] my-3">
+              Gọi ngay:{' '}
+              <a href="tel:0347366345" className="underline">
+                0347.366.345
+              </a>
             </div>
 
             <div className="mt-4 content-detail-product">
@@ -105,12 +114,12 @@ const ProductDetail = ({ product }: { product: IProductProps }) => {
                 </li>
               </ul>
               <p>
-                <strong>Hoàn cảnh sử dụng:</strong>Cửa hàng thức ăn nhanh, quán
+                <strong>Hoàn cảnh sử dụng: </strong>Cửa hàng thức ăn nhanh, quán
                 trà sữa, quán café, cửa hàng đồ uống, cửa hàng bánh ngọt, đồ
                 dùng gia đình cao cấp, chuỗi cửa hàng thức ăn,vv
               </p>
               <p>
-                <strong>Trường hợp đặc biệt:</strong>Có thể đặt in nhẵn hiệu,
+                <strong>Trường hợp đặc biệt: </strong>Có thể đặt in nhẵn hiệu,
                 đối với sản phẩm có quy cách đặt biệt có thể dựa theo yêu cầu
                 của khách hàng mở khuôn.
               </p>

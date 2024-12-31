@@ -56,6 +56,7 @@ const config = {
       boxShadow: {
         navbar: "0px 10px 13px #0000000d",
         "product-item": "0px 0px 10px #3333",
+        input: "inset 0 1px 2px rgba(0,0,0,.1)",
       },
       fontSize: {
         "15/16": "0.9375rem",

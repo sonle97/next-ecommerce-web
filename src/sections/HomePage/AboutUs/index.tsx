@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import Aos from "aos";
-import Image from "next/image";
-import "./styles.scss";
-import Link from "next/link";
-import TitleSection from "@/components/TitleSection";
+import { useEffect } from 'react';
+import Aos from 'aos';
+import Image from 'next/image';
+import './styles.scss';
+import Link from 'next/link';
+import TitleSection from '@/components/TitleSection';
 
 const AboutUs = () => {
   useEffect(function () {
@@ -14,7 +14,7 @@ const AboutUs = () => {
 
   return (
     <section>
-      <TitleSection title="VỀ CHÚNG TÔI" />
+      <TitleSection title="Về chúng tôi" />
 
       <div className="flex items-start md:gap-8 gap-4 md:flex-row flex-col">
         <div className="md:w-1/2 w-full lg:pr-12 pr-0" data-aos="zoom-in-down">

@@ -10,8 +10,8 @@ import 'swiper/css/scrollbar';
 import './styles.scss';
 
 import Product from '@/components/Product';
-import { products } from '@/sections/AllProducts';
 import TitleSection from '@/components/TitleSection';
+import { products } from '@/config/data/products';
 
 const RelatedProducts = () => {
   return (

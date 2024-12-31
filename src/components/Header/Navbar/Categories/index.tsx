@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { FaBars } from "react-icons/fa";
-import { BiChevronRight } from "react-icons/bi";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { FaBars } from 'react-icons/fa';
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
-import { NavBarProps, navBars, Tab } from "../data";
-import styles from "./styles.module.scss";
-import { useWindowScrollPositions } from "@/hooks/useWindowScrollPositions";
+import styles from './styles.module.scss';
+import { useWindowScrollPositions } from '@/hooks/useWindowScrollPositions';
+import { categories, ICategories } from '@/config/data/categories';
 
 function Categories() {
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(true);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const pathname = usePathname();
   const { scrollY } = useWindowScrollPositions();
   const isShowButtonScrollToTop = scrollY > 200;
 
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     setIsCategoriesOpen(isHomePage);
@@ -49,37 +49,21 @@ function Categories() {
       </div>
       {isCategoriesOpen && (
         <ul className={styles.nav_categories}>
-          {navBars.map((nav: NavBarProps, idx: number) => {
+          {categories.map((category: ICategories) => {
             return (
-              <li key={idx}>
+              <li key={category.id} className="border-b">
                 <Link
-                  href={nav.url}
-                  className={`flex items-center justify-between ${
-                    nav.isHot ? "text-red-2" : ""
-                  }`}
+                  href={`/${category.slug}`}
+                  className="flex items-center gap-3"
                 >
-                  <div className="flex items-center">
-                    {nav.title}{" "}
-                    {nav.isHot && (
-                      <span className="bg-red-2 p-0.5 px-1 text-white text-[10px] font-bold rounded ml-2">
-                        Hot
-                      </span>
-                    )}
-                  </div>
-
-                  {nav.subTab && nav.subTab.length && (
-                    <BiChevronRight size={20} />
-                  )}
+                  <Image
+                    src={category.icon}
+                    alt={category.title}
+                    width={25}
+                    height={25}
+                  />
+                  <div className="flex items-center">{category.title}</div>
                 </Link>
-                {nav.subTab && nav.subTab.length && (
-                  <ul className={styles.subMenu}>
-                    {nav.subTab.map((subNav: Tab, idx: number) => (
-                      <li key={idx} className="cursor-pointer">
-                        <Link href={subNav.url}>{subNav.title}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
               </li>
             );
           })}

@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { FaFacebookF, FaHome, FaTiktok } from "react-icons/fa";
-import { MdOutlineChevronRight } from "react-icons/md";
-import { AiOutlineMail, AiFillPhone } from "react-icons/ai";
-import Image from "next/image";
-import { BsInstagram, BsYoutube } from "react-icons/bs";
+import Link from 'next/link';
+import { FaFacebookF, FaHome, FaTiktok } from 'react-icons/fa';
+import { MdOutlineChevronRight } from 'react-icons/md';
+import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
+import Image from 'next/image';
+import { BsInstagram, BsYoutube } from 'react-icons/bs';
 
 interface ItemLinkProps {
   label: string;
@@ -15,7 +15,7 @@ const ItemLink = (props: ItemLinkProps) => {
   return (
     <Link
       href={url}
-      className="text-[15px] flex items-center hover:text-green-2 mb-3 last:mb-0"
+      className="md:text-[15px] text-sm flex items-center hover:text-green-2 mb-3 last:mb-0"
     >
       <MdOutlineChevronRight size={20} className="mr-2 text-green-2" />
       <span>{label}</span>
@@ -26,15 +26,15 @@ const ItemLink = (props: ItemLinkProps) => {
 const Footer = () => {
   return (
     <>
-      <footer className="w-full bg-[#292a2d] text-white sm:rounded-t-[60px] rounded-t-[30px] sm:mt-[30px] mt-[20px]">
+      <footer className="w-full bg-[#292a2d] text-white sm:rounded-t-[60px] rounded-t-[30px] sm:mt-[30px] mt-[20px] text">
         <section className="container py-[40px] px-3 lg:flex hidden items-start justify-between gap-6">
           <div>
             <h3 className="mb-2 capitalize">Giới thiệu</h3>
-            <ItemLink label="Giới thiệu" url="" />
-            <ItemLink label="Đối tác" url="" />
-            <ItemLink label="Sản phẩm" url="" />
-            <ItemLink label="Tuyển dụng" url="" />
-            <ItemLink label="Liên hệ" url="" />
+            <ItemLink label="Giới thiệu" url="/gioi-thieu" />
+            <ItemLink label="Sản phẩm" url="/cua-hang" />
+            <ItemLink label="Dịch vụ in ấn" url="/dich-vu-in-an" />
+            <ItemLink label="Tin tức" url="/tin-tuc" />
+            <ItemLink label="Liên hệ" url="/lien-he" />
 
             <Image
               className="mt-8 rounded-lg"
@@ -69,7 +69,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center mb-3">
                 <AiFillPhone className="mr-2 text-green-2" size={20} />
-                Điện thoại: 034736634
+                <span>Điện thoại: 0347.366.345</span>
               </li>
               <li className="flex items-center mb-3">
                 <AiOutlineMail className="mr-2 text-green-2" size={20} />
@@ -100,7 +100,7 @@ const Footer = () => {
         </section>
 
         {/* mobile */}
-        <section className="container sm:py-[40px] py-[25px] flex flex-col lg:hidden items-start justify-between gap-4">
+        <section className="container sm:py-[40px] py-[25px] flex flex-col lg:hidden items-start justify-between gap-4 text-sm">
           <div className="flex items-start sm:gap-14 gap-6">
             <div>
               <h3 className="mb-2 capitalize">Giới thiệu</h3>
@@ -141,7 +141,7 @@ const Footer = () => {
                 </li>
                 <li className="flex items-center mb-3">
                   <AiFillPhone className="mr-2 text-green-2" size={20} />
-                  0347366345
+                  0347.366.345
                 </li>
                 <li className="flex items-center mb-3">
                   <AiOutlineMail className="mr-2 text-green-2" size={20} />
@@ -184,7 +184,7 @@ const Footer = () => {
 
         <div className="container border-t w-full text-center text-white text-sm py-4">
           Copyright 2023 © Thiết kế website <b>LyXanh</b> bởi Mr. SonLe
-          (0347366345)
+          (0347.366.345)
         </div>
       </footer>
     </>

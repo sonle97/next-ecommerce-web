@@ -1,12 +1,12 @@
-import { Metadata } from "next";
-import "./styles.scss";
-import { newsCategories } from "@/sections/NewsPage/data";
-import SimilarArticlesPage from "../[components]/SimilarArticlesPage";
+import { Metadata } from 'next';
+import './styles.scss';
+import { newsCategories } from '@/sections/NewsPage/data';
+import SimilarArticlesPage from '../[components]/SimilarArticlesPage';
 
 export const metadata: Metadata = {
-  title: "Tin tức",
-  description: "Sản phẩm của Ly xanh",
-  icons: "ly-icon.png",
+  title: 'Tin tức',
+  description: 'Sản phẩm của Ly xanh',
+  icons: 'ly-icon.png',
 };
 
 const NewsDetail = () => {

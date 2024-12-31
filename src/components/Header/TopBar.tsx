@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { FaFacebookF, FaTiktok } from "react-icons/fa";
-import { BiLogoGmail } from "react-icons/bi";
-import { SiZalo } from "react-icons/si";
-import { HiPhone } from "react-icons/hi";
+import Link from 'next/link';
+import { FaFacebookF, FaTiktok } from 'react-icons/fa';
+import { BiLogoGmail } from 'react-icons/bi';
+import { SiZalo } from 'react-icons/si';
+import { HiPhone } from 'react-icons/hi';
 
 function TopBar() {
   return (
     <div className="bg-main py-2 text-white">
       <div className="container flex items-center justify-between text-base">
-        <span className="uppercase flex items-center font-medium">LY XANH</span>{" "}
+        <span className="uppercase flex items-center font-medium">SONPACK</span>{' '}
         <div className="flex items-center gap-4">
           <Link href="lien-he">
             <HiPhone
@@ -37,7 +37,7 @@ function TopBar() {
           <Link href="lien-he">
             <SiZalo
               className="text-green-1 opacity-100 hover:opacity-80"
-              size={28}
+              size={30}
             />
           </Link>
         </div>

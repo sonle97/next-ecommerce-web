@@ -1,23 +1,24 @@
-import Image from "next/image";
-import MobileSection from "./MobileSection";
+import Image from 'next/image';
+import MobileSection from './MobileSection';
 
 export const supportSectionData = [
   {
-    icon: "/sp_home_icon.png",
-    title: "Cập nhật sản phẩm mới",
+    icon: '/sp_home_icon.png',
+    title: 'Cập nhật sản phẩm mới',
     description:
-      "Sản phẩm đa dạng, nhiều mẫu mã và được cập nhật thường xuyên.",
+      'Chúng tôi luôn cập nhật sản phẩm mới và đa dạng để đáp ứng nhu cầu của bạn.',
   },
   {
-    icon: "/sp_car_icon.jpg",
-    title: "Ship hàng siêu tốc",
-    description: "Giao hàng siêu nhanh nội thành và ngoại thành.",
+    icon: '/sp_car_icon.jpg',
+    title: 'Ship hàng siêu tốc',
+    description:
+      'Chúng tôi cam kết giao hàng nhanh chóng và hiệu quả trong nội và ngoại thành.',
   },
   {
-    icon: "/sp_exchange_icon.png",
-    title: "Đổi trả miễn phí",
+    icon: '/sp_exchange_icon.png',
+    title: 'Đổi trả miễn phí',
     description:
-      "Chúng tôi hỗ trợ đổi trả miễn phí với hàng lỗi, hàng kém chất lượng.",
+      'Chúng tôi hỗ trợ đổi trả miễn phí với hàng lỗi, hàng kém chất lượng.',
   },
 ];
 

@@ -31,3 +31,14 @@
   }
 }
 
+.overflow-y-auto{
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #3e3e41;
+    border-radius: 2.5px;
+  }
+}
+

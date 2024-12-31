@@ -1,8 +1,10 @@
-import React from "react";
-import { HiBars3 } from "react-icons/hi2";
-import { IoIosSearch } from "react-icons/io";
-import { BsCart4 } from "react-icons/bs";
-import Logo from "../../SearchSection/Logo";
+import { useState } from 'react';
+import { HiBars3 } from 'react-icons/hi2';
+import { IoIosSearch } from 'react-icons/io';
+
+import SearchResults from './SearchResults';
+import Cart from '../../SearchSection/Cart';
+import Logo from '../../SearchSection/Logo';
 
 interface IMobile {
   setIsShowMenuMobile: (value: boolean) => void;
@@ -10,8 +12,15 @@ interface IMobile {
 
 const Mobile = (props: IMobile) => {
   const { setIsShowMenuMobile } = props;
+
+  const [isSearchResultPanelOpen, setIsSearchResultPanelOpen] = useState(false);
+
+  const handleOpenSearchResultPanel = (isOpen: boolean) => {
+    setIsSearchResultPanelOpen(isOpen);
+  };
+
   return (
-    <div className="container h-full lg:hidden flex items-center justify-between">
+    <div className="container h-full lg:hidden flex items-center justify-between relative">
       <HiBars3
         size={30}
         className="cursor-pointer text-white"
@@ -19,16 +28,18 @@ const Mobile = (props: IMobile) => {
       />
       <Logo />
       <div className="flex items-center gap-4 sm:gap-5">
-        <IoIosSearch className="text-white mx-auto cursor-pointer" size={28} />
-        <div className="relative cursor-pointer">
-          <BsCart4 size={28} className="text-white" />
-          <div
-            className="absolute -top-[5px] -right-[3px] border rounded-full text-white bg-red-1 
-              w-5 h-5 flex items-center justify-center text-xs"
-          >
-            1
-          </div>
-        </div>
+        <IoIosSearch
+          className="text-white mx-auto cursor-pointer"
+          size={28}
+          onClick={() => setIsSearchResultPanelOpen(!isSearchResultPanelOpen)}
+        />
+        {isSearchResultPanelOpen && (
+          <SearchResults
+            handleOpenSearchResultPanel={handleOpenSearchResultPanel}
+          />
+        )}
+
+        <Cart />
       </div>
     </div>
   );

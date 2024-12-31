@@ -1,11 +1,12 @@
-import Header from '@/components/Header';
-import './globals.css';
-import './app.scss';
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import ButtonScrollOnTop from '@/components/ButtonScrollOnTop';
 import Footer from '@/components/Footer';
 import { cn } from '@/lib/utils';
+import { CartProvider } from '@/context/CartContext';
+import Header from '@/components/Header';
+import './globals.css';
+import './app.scss';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -30,10 +31,11 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Header />
-        {children}
-        <Footer />
-
+        <CartProvider>
+          <Header />
+          {children}
+          <Footer />
+        </CartProvider>
         <ButtonScrollOnTop />
       </body>
     </html>

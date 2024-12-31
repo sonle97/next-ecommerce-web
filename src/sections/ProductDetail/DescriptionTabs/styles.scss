@@ -9,15 +9,14 @@
     border-top-right-radius: 4px;
     text-transform: uppercase;
     color: rgba(102, 102, 102, 0.85);
-    margin-right: 3px;
     padding: 7px 20px;
     &.active {
-      background: #276788;
+      background: #3078a6;
       color: white;
     }
   }
   .content {
-    border-top: 2px solid #276788;
+    border-top: 2px solid #3078a6;
   }
 
   @media (max-width: 768px) {
@@ -31,7 +30,7 @@
 .review-product-wrapper {
  .form-wrapper {
     margin-top: 30px;
-    border: 2px solid #0f7cb6;
+    border: 2px solid #3078a6;
     padding: 15px 30px 30px;
     .star-wrapper {
       .star {
