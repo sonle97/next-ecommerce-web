@@ -1,9 +1,9 @@
-import { IoCloseOutline } from "react-icons/io5";
-import { BsCart4 } from "react-icons/bs";
+import { IoCloseOutline } from 'react-icons/io5';
+import { TfiAngleRight } from 'react-icons/tfi';
 
-import styles from "./styles.module.scss";
-import Image from "next/image";
-import Link from "next/link";
+import styles from './styles.module.scss';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface ISearchResults {
   searchResults: any[];
@@ -19,7 +19,7 @@ const SearchResults = (props: ISearchResults) => {
         <p>
           {searchResults.length > 0
             ? `${searchResults.length} sản phẩm được tìm thấy`
-            : ""}
+            : ''}
         </p>
         <IoCloseOutline
           size={30}
@@ -43,7 +43,7 @@ const SearchResults = (props: ISearchResults) => {
                     <strong>Category:</strong> {result.category}
                   </p>
                 </div>
-                <BsCart4
+                <TfiAngleRight
                   className="text-main ml-auto hover:text-red-1"
                   size={22}
                 />

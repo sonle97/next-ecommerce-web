@@ -5,7 +5,7 @@ function Logo() {
   return (
     <Link href="/">
       <Image
-        src="/lyxanh_logo.jpg"
+        src="/logos/lyxanh_logo.png"
         alt="Ly xanh Logo"
         width={100}
         height={28}

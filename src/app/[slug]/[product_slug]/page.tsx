@@ -1,5 +1,6 @@
 import ProductDetail from '@/sections/ProductDetail';
 import { products } from '@/config/data/products';
+import { notFound } from 'next/navigation';
 
 export function generateMetadata({
   params,
@@ -36,7 +37,7 @@ export default function ProductDetailPage({
   );
 
   if (!product) {
-    return null;
+    notFound();
   }
 
   return (

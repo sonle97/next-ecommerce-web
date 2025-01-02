@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { FiSearch } from "react-icons/fi";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { IoCloseOutline } from "react-icons/io5";
-import { BsCart4 } from "react-icons/bs";
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FiSearch } from 'react-icons/fi';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { IoCloseOutline } from 'react-icons/io5';
+import { TfiAngleRight } from 'react-icons/tfi';
 
-import styles from "../../SearchSection/styles.module.scss";
-import { dataSearch } from "../../SearchSection/SearchBar";
+import styles from '../../SearchSection/styles.module.scss';
+import { dataSearch } from '../../SearchSection/SearchBar';
 
 interface ISearchResults {
   handleOpenSearchResultPanel: Function;
@@ -17,7 +17,7 @@ interface ISearchResults {
 
 const SearchResults = (props: ISearchResults) => {
   const { handleOpenSearchResultPanel } = props;
-  const [searchValue, setSearchValueInput] = useState("");
+  const [searchValue, setSearchValueInput] = useState('');
 
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [searching, setSearching] = useState(false);
@@ -57,7 +57,7 @@ const SearchResults = (props: ISearchResults) => {
               className="text-white text-sm mx-auto"
               size={20}
               style={{
-                animation: "spin 1s linear infinite",
+                animation: 'spin 1s linear infinite',
               }}
             />
           ) : (
@@ -68,7 +68,7 @@ const SearchResults = (props: ISearchResults) => {
       <p className="mb-2 pl-[10px]">
         {searchResults.length > 0
           ? `${searchResults.length} sản phẩm được tìm thấy`
-          : ""}
+          : ''}
       </p>
       <div className={styles.search_result}>
         {searchResults.length > 0 ? (
@@ -86,7 +86,7 @@ const SearchResults = (props: ISearchResults) => {
                     <strong>Category:</strong> {result.category}
                   </p>
                 </div>
-                <BsCart4
+                <TfiAngleRight
                   className="text-main ml-auto hover:text-red-1"
                   size={22}
                 />
