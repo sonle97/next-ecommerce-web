@@ -1,11 +1,23 @@
 import { useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Modal, { ModalProps } from '@/components/ui/Modal';
+import { ACTION_TYPES, useCart } from '@/context/CartContext';
 
 interface IOrderSuccessModal extends ModalProps {}
 
 const OrderSuccessModal = (props: IOrderSuccessModal) => {
   const modalRef = useRef<any>(null);
+  const router = useRouter();
+  const { dispatch } = useCart();
+
+  function onClose(): void {
+    modalRef.current.close();
+    router.push('/cua-hang');
+
+    // Reset cart
+    dispatch({ type: ACTION_TYPES.CLEAR_CART });
+  }
 
   return (
     <Modal
@@ -37,12 +49,7 @@ const OrderSuccessModal = (props: IOrderSuccessModal) => {
         vui lòng liên hệ hotline: 0347.366.345. Xin cảm ơn!
       </p>
 
-      <div
-        className="mt-4 text-right"
-        onClick={() => {
-          modalRef.current.close();
-        }}
-      >
+      <div className="mt-4 text-right" onClick={() => onClose()}>
         <Button variant="secondary">Đóng</Button>
       </div>
     </Modal>

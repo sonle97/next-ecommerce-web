@@ -7,6 +7,7 @@ import ReviewsProduct from './ReviewsProduct';
 
 import InfoPayments from './InfoPayments';
 import './styles.scss';
+import { IProduct } from '@/config/data/products';
 
 export const TypeTab = {
   DescriptionProduct: 'description-product',
@@ -17,7 +18,7 @@ export const TypeTab = {
 const TAB_INDEX = {
   DescriptionProductTab: 1,
   ReviewsProductTab: 2,
-  InfoPaymentstab: 3,
+  InfoPaymentTab: 3,
 };
 
 const TabItems = [
@@ -30,7 +31,7 @@ const TabItems = [
     title: 'Đánh giá',
   },
   {
-    id: TAB_INDEX.InfoPaymentstab,
+    id: TAB_INDEX.InfoPaymentTab,
     title: 'Thanh toán',
   },
 ];
@@ -58,13 +59,9 @@ const TabIndex: React.FC<any> = (props: TabIndexProps) => {
   );
 };
 
-const Linked = () => {
+const Linked = ({ product }: { product: IProduct }) => {
   const [isActive, setIsActive] = useState(TAB_INDEX.DescriptionProductTab);
 
-  function switchForm(id: number): void {
-    setIsActive(id);
-  }
-  switchForm;
   return (
     <div className="detail-product-wrapper">
       <div className="flex items-center gap-1">
@@ -81,8 +78,10 @@ const Linked = () => {
 
       <div className="py-4 content">
         {isActive === TAB_INDEX.DescriptionProductTab && <DescriptionProduct />}
-        {isActive === TAB_INDEX.ReviewsProductTab && <ReviewsProduct />}
-        {isActive === TAB_INDEX.InfoPaymentstab && <InfoPayments />}
+        {isActive === TAB_INDEX.ReviewsProductTab && (
+          <ReviewsProduct product={product} />
+        )}
+        {isActive === TAB_INDEX.InfoPaymentTab && <InfoPayments />}
       </div>
     </div>
   );

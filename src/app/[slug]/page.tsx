@@ -12,7 +12,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
 }
 
 export const revalidate = 60;
-export const dynamicParams = false; // or false, to 404 on unknown paths
+export const dynamicParams = true; // or false, to 404 on unknown paths
 
 export async function generateStaticParams() {
   return categories.map((category) => ({

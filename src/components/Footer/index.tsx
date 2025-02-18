@@ -46,11 +46,26 @@ const Footer = () => {
           </div>
           <div>
             <h3 className="mb-2 capitalize">Hỗ trợ khách hàng</h3>
-            <ItemLink label="Câu hỏi thường gặp" url="" />
-            <ItemLink label="Hướng dẫn đặt hàng" url="" />
-            <ItemLink label="Hướng dẫn thanh toán" url="" />
-            <ItemLink label="Chính sách bảo hành" url="" />
-            <ItemLink label="Chính sách đổi trả hàng hóa" url="" />
+            <ItemLink
+              label="Hình thức đặt hàng"
+              url="/ho-tro#hinh-thuc-dat-hang"
+            />
+            <ItemLink
+              label="Chính sách bán hàng"
+              url="/ho-tro#chinh-sach-ban-hang"
+            />
+            <ItemLink
+              label="Chính sách thanh toán"
+              url="/ho-tro#chinh-sach-thanh-toan"
+            />
+            <ItemLink
+              label="Chính sách bảo hành"
+              url="/ho-tro#chinh-sach-bao-hanh"
+            />
+            <ItemLink
+              label="Chính sách đổi trả"
+              url="/ho-tro#chinh-sach-doi-tra"
+            />
             <p className="font-bold mt-8">Kết nối với chúng tôi</p>
             <div className="flex items-center gap-4 mt-3">
               <FaFacebookF size={25} className="cursor-pointer" />
@@ -104,19 +119,34 @@ const Footer = () => {
           <div className="flex items-start sm:gap-14 gap-6">
             <div>
               <h3 className="mb-2 capitalize">Giới thiệu</h3>
-              <ItemLink label="Giới thiệu" url="" />
-              <ItemLink label="Đối tác" url="" />
-              <ItemLink label="Sản phẩm" url="" />
-              <ItemLink label="Tuyển dụng" url="" />
-              <ItemLink label="Liên hệ" url="" />
+              <ItemLink label="Giới thiệu" url="/gioi-thieu" />
+              <ItemLink label="Sản phẩm" url="/cua-hang" />
+              <ItemLink label="Dịch vụ in ấn" url="/dich-vu-in-an" />
+              <ItemLink label="Tin tức" url="/tin-tuc" />
+              <ItemLink label="Liên hệ" url="/lien-he" />
             </div>
             <div>
               <h3 className="mb-2 capitalize">Hỗ trợ khách hàng</h3>
-              <ItemLink label="Câu hỏi thường gặp" url="" />
-              <ItemLink label="Hướng dẫn đặt hàng" url="" />
-              <ItemLink label="Hướng dẫn thanh toán" url="" />
-              <ItemLink label="Chính sách bảo hành" url="" />
-              <ItemLink label="Chính sách đổi trả hàng hóa" url="" />
+              <ItemLink
+                label="Hình thức đặt hàng"
+                url="/ho-tro#hinh-thuc-dat-hang"
+              />
+              <ItemLink
+                label="Chính sách bán hàng"
+                url="/ho-tro#chinh-sach-ban-hang"
+              />
+              <ItemLink
+                label="Chính sách thanh toán"
+                url="/ho-tro#chinh-sach-thanh-toan"
+              />
+              <ItemLink
+                label="Chính sách bảo hành"
+                url="/ho-tro#chinh-sach-bao-hanh"
+              />
+              <ItemLink
+                label="Chính sách đổi trả"
+                url="/ho-tro#chinh-sach-doi-tra"
+              />
             </div>
             <div className="sm:block hidden">
               <h3 className="mb-2 capitalize">Fanpage</h3>

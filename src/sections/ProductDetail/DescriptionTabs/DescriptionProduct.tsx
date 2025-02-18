@@ -51,29 +51,29 @@ const ReadMore = ({ content }: { content: string }) => {
   };
   return (
     <>
-      <div className={`${isReadMore ? '' : 'h-[300px]'} overflow-hidden`}>
+      <div className={`${isReadMore ? '' : 'h-[220px]'} overflow-hidden`}>
         {content}
       </div>
 
       <div
         onClick={toggleReadMore}
-        className='cursor-pointer text-main text-center relative h-[40px] leading-[40px]'
+        className="cursor-pointer text-main text-center relative h-[40px] leading-[40px]"
       >
-        <span className='flex items-center justify-center'>
+        <span className="flex items-center justify-center font-[500] text-base">
           {!isReadMore ? (
             <>
-              Xem thêm <MdArrowDropDown size={30} />
+              Xem thêm <MdArrowDropDown size={35} />
             </>
           ) : (
             <>
-              Thu gọn <MdArrowDropUp size={30} />
+              Thu gọn <MdArrowDropUp size={35} />
             </>
           )}
         </span>
 
         {!isReadMore && (
           <div
-            className='h-[40px] absolute -top-[35px] w-full'
+            className="h-[40px] absolute -top-[35px] w-full"
             style={{
               background: `linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))`,
             }}

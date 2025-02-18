@@ -16,6 +16,7 @@ export enum ACTION_TYPES {
   UPDATE_QUANTITY = 'UPDATE_QUANTITY',
   UPDATE_UNIT_OF_MEASURE = 'UPDATE_UNIT_OF_MEASURE',
   CLEAR_CART = 'CLEAR_CART',
+  INITIALIZE_CART = 'INITIALIZE_CART',
 }
 
 export enum UnitOfMeasure {
@@ -50,8 +51,8 @@ type CartAction =
         unit_of_measure: UnitOfMeasure;
       };
     }
-  | { type: 'CLEAR_CART' }
-  | { type: 'INITIALIZE_CART'; payload: CartState };
+  | { type: ACTION_TYPES.CLEAR_CART }
+  | { type: ACTION_TYPES.INITIALIZE_CART; payload: CartState };
 
 const CartContext = createContext<{
   cart: CartState;
@@ -96,10 +97,10 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
           : item
       );
 
-    case 'CLEAR_CART':
+    case ACTION_TYPES.CLEAR_CART:
       return [];
 
-    case 'INITIALIZE_CART':
+    case ACTION_TYPES.INITIALIZE_CART:
       return action.payload;
 
     default:
@@ -116,7 +117,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     const storedCart = localStorage.getItem(CART_STORAGE_KEY);
     if (storedCart) {
       dispatch({
-        type: 'INITIALIZE_CART',
+        type: ACTION_TYPES.INITIALIZE_CART,
         payload: JSON.parse(storedCart),
       });
     }

@@ -127,7 +127,7 @@ const ProductDetail = ({ product }: { product: IProduct }) => {
           </div>
         </div>
 
-        <DescriptionTabs />
+        <DescriptionTabs product={product} />
         <RelatedProducts />
       </div>
     </>
