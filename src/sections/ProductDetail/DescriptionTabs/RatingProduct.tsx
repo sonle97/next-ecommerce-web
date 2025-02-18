@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Star } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
-import { CiStar } from 'react-icons/ci';
-import { Input } from '@/components/ui/Input';
+import { Input, TextArea } from '@/components/ui/Input';
 
 interface Review {
   id: number;
@@ -56,18 +56,20 @@ const RatingProduct = () => {
         <p className="text-lg font-semibold">{averageRating} / 5</p>
         <div className="flex justify-center gap-1">
           {[...Array(5)].map((_, i) => (
-            <CiStar
+            <Star
               key={i}
               size={20}
               color={i < Math.round(Number(averageRating)) ? 'gold' : 'black'}
             />
           ))}
         </div>
-        <p className="text-sm text-gray-500">({reviews.length} đánh giá)</p>
+        <p className="text-sm text-gray-500 mt-2">
+          ({reviews.length} đánh giá)
+        </p>
       </div>
 
       <div className="mb-4 p-4 border rounded-lg shadow-sm">
-        <h3 className="md:text-lg text-base font-semibold mb-2">
+        <h3 className="md:text-lg text-base text-center font-semibold mb-2">
           Viết đánh giá
         </h3>
         <Input
@@ -79,27 +81,26 @@ const RatingProduct = () => {
             setNewReview({ ...newReview, name: e.target.value })
           }
         />
-        <input
+        <Input
           type="email"
           placeholder="Email"
-          className="w-full p-2 border rounded mb-2"
           value={newReview.email}
-          onChange={(e) =>
+          onChange={(e: any) =>
             setNewReview({ ...newReview, email: e.target.value })
           }
         />
-        <textarea
+        <TextArea
           placeholder="Nhận xét của bạn"
           className="w-full p-2 border rounded mb-2"
           value={newReview.comment}
-          onChange={(e) =>
+          onChange={(e: any) =>
             setNewReview({ ...newReview, comment: e.target.value })
           }
-        ></textarea>
+        ></TextArea>
         <div className="flex items-center gap-2 mb-2">
           <p>Đánh giá:</p>
           {[...Array(5)].map((_, i) => (
-            <CiStar
+            <Star
               key={i}
               size={20}
               color={i < newReview.rating ? 'gold' : 'gray'}
