@@ -4,15 +4,16 @@ import { TfiAngleRight } from 'react-icons/tfi';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
+import { IProduct } from '@/config/entities';
 
 interface ISearchResults {
-  searchResults: any[];
+  searchResults: IProduct[];
   handleOpenSearchResultPanel: Function;
 }
 
 const SearchResults = (props: ISearchResults) => {
   const { searchResults, handleOpenSearchResultPanel } = props;
-
+  console.log(searchResults);
   return (
     <div className={styles.search_result_wrapper}>
       <div className="flex items-center justify-between my-2 pl-[10px]">
@@ -32,15 +33,21 @@ const SearchResults = (props: ISearchResults) => {
           searchResults.map((result) => (
             <Link
               key={result.id}
-              href={`/san-pham/${result.id}`}
+              href={`/${result.category.slug}/${result.slug}`}
               onClick={() => handleOpenSearchResultPanel(false)}
             >
               <div className={styles.search_result_item}>
-                <img src="/images/products/product-image.jpg" alt="product" />
+                <img src={result.images[0].imageUrl} alt="product" />
                 <div>
-                  <p className="font-medium">{result.title}</p>
-                  <p className="text-sm">
-                    <strong>Category:</strong> {result.category}
+                  <p className="font-medium">{result.name}</p>
+                  <p className="text-sm mt-2">
+                    <span>Category:</span>{' '}
+                    <Link
+                      href={result.category.slug}
+                      className="hover:underline"
+                    >
+                      {result.category.name}
+                    </Link>
                   </p>
                 </div>
                 <TfiAngleRight

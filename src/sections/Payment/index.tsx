@@ -7,32 +7,46 @@ import { Button } from '@/components/ui/button';
 import OrderSuccessModal from './OrderSuccessModal';
 import ButtonLoading from '@/components/Loading/ButtonLoading';
 import { useCart } from '@/context/CartContext';
+import OrderProduct from '@/api/OrderProduct';
 
 const PaymentSection = () => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    address: '',
-    phoneNumber: '',
-    email: '',
-    note: '',
-  });
-  const [isOrderSuccessModalOpen, setIsOrderSuccessModalOpen] = useState(false);
+  const [orders, setOrders] = useState(null);
   const [ordering, setOrdering] = useState(false);
   const { cart } = useCart();
 
-  const handleChange = (e: any) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
-    setOrdering(true);
-    setTimeout(() => {
-      setOrdering(false);
+    try {
+      setOrdering(true);
+      const formData = new FormData(e.currentTarget);
+      const informationOrder = Object.fromEntries(formData.entries());
+      const { data } = await OrderProduct.createOrder({
+        ...informationOrder,
+        orderItems: cart.map((item) => ({
+          productId: item.id,
+          quantity: item.quantity,
+          unit_of_measure: item.unit_of_measure,
+        })),
+      });
 
-      setIsOrderSuccessModalOpen(true);
-    }, 2000);
+      const orderIds =
+        typeof window !== 'undefined'
+          ? JSON.parse(localStorage.getItem('orderIds') || '[]')
+          : [];
+
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(
+          'orderIds',
+          JSON.stringify([...orderIds, data.orderId])
+        );
+      }
+
+      setOrders(data);
+    } catch (error) {
+      console.error('Error ordering:', error);
+    } finally {
+      setOrdering(false);
+    }
   };
 
   return (
@@ -41,24 +55,17 @@ const PaymentSection = () => {
         <div className="flex items-start md:flex-row flex-col-reverse md:gap-8 gap-4">
           <div className="md:w-1/2 w-full">
             <div className="text-xl font-bold mb-4 text-main">
-              Thông tin thanh toán
+              Thông tin đặt hàng
             </div>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
-                  htmlFor="fullName"
+                  htmlFor="name"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
                   Họ và tên <span className="text-red-1">*</span>
                 </label>
-                <Input
-                  type="text"
-                  required
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                />
+                <Input type="text" required id="name" name="name" />
               </div>
               <div className="mb-4">
                 <label
@@ -71,8 +78,6 @@ const PaymentSection = () => {
                   id="address"
                   name="address"
                   required
-                  value={formData.address}
-                  onChange={handleChange}
                   rows={3}
                 ></TextArea>
               </div>
@@ -83,14 +88,7 @@ const PaymentSection = () => {
                 >
                   Số điện thoại <span className="text-red-1">*</span>
                 </label>
-                <Input
-                  type="tel"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  required
-                  value={formData.phoneNumber}
-                  onChange={handleChange}
-                />
+                <Input type="tel" id="phone" name="phone" required />
               </div>
               <div className="mb-4">
                 <label
@@ -99,13 +97,7 @@ const PaymentSection = () => {
                 >
                   Địa chỉ email
                 </label>
-                <Input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
+                <Input type="email" id="email" name="email" />
               </div>
               <div className="mb-4">
                 <label
@@ -114,13 +106,7 @@ const PaymentSection = () => {
                 >
                   Ghi chú đơn hàng (tùy chọn)
                 </label>
-                <TextArea
-                  id="note"
-                  name="note"
-                  value={formData.note}
-                  onChange={handleChange}
-                  rows={3}
-                ></TextArea>
+                <TextArea id="note" name="note" rows={3}></TextArea>
               </div>
               <Button
                 variant="by_now"
@@ -181,10 +167,11 @@ const PaymentSection = () => {
           </div>
         </div>
       </section>
-      {isOrderSuccessModalOpen && (
+      {!!orders && (
         <OrderSuccessModal
-          isOpen={isOrderSuccessModalOpen}
-          onClose={() => setIsOrderSuccessModalOpen(false)}
+          isOpen={!!orders}
+          orders={orders}
+          onClose={() => setOrders(null)}
         />
       )}
     </>

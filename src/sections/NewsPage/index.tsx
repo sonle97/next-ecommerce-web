@@ -4,12 +4,15 @@ import moment from 'moment';
 import './styles.scss';
 import { newsList } from './data';
 import TitleSection from '@/components/TitleSection';
-import Pagination from '@/components/Pagination';
 import Link from 'next/link';
 
 const ArticleCard = ({ news }: any) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden lg:w-[calc(25%_-_12px)] sm:w-[calc(33.3%_-_11px)] w-[calc(50%_-_10px)] cursor-pointer relative">
+    <div
+      className="bg-white rounded-lg shadow-md overflow-hidden 
+      lg:w-[calc(25%_-_18px)] sm:w-[calc(33.3%_-_16px)] w-[70%] 
+      cursor-pointer relative"
+    >
       <Link href={`/tin-tuc/1`}>
         <Image
           src={news.image}
@@ -39,7 +42,7 @@ export default function NewsPage() {
     <div className="container">
       <section>
         <TitleSection title="Tin tức" isLine={false} />
-        <div className="flex items-center justify-center gap-6 my-4 mb-10 flex-wrap">
+        <div className="flex items-center justify-center md:gap-6 gap-4 my-4 md:mb-10 mb-7 flex-wrap">
           <Link
             href="/tin-tuc"
             className="border border-slate-300 bg-[#f7f7f7] font-medium hover:text-main rounded-[50px] md:px-6 px-4 py-2"
@@ -65,16 +68,10 @@ export default function NewsPage() {
             Chưa phân loại
           </Link>
         </div>
-        <div className="flex items-start justify-between gap-8">
-          <div className="w-full">
-            <div className="flex items-start gap-4 flex-wrap">
-              {newsList.slice(0, 6).map((news) => (
-                <ArticleCard key={news.id} news={news} />
-              ))}
-            </div>
-
-            <Pagination />
-          </div>
+        <div className="flex items-start gap-6 flex-wrap sm:justify-start justify-center">
+          {newsList.slice(0, 6).map((news) => (
+            <ArticleCard key={news.id} news={news} />
+          ))}
         </div>
       </section>
     </div>

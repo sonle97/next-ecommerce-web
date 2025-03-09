@@ -7,7 +7,7 @@ import ReviewsProduct from './ReviewsProduct';
 
 import InfoPayments from './InfoPayments';
 import './styles.scss';
-import { IProduct } from '@/config/data/products';
+import { IProduct } from '@/config/entities';
 
 export const TypeTab = {
   DescriptionProduct: 'description-product',
@@ -59,7 +59,7 @@ const TabIndex: React.FC<any> = (props: TabIndexProps) => {
   );
 };
 
-const Linked = ({ product }: { product: IProduct }) => {
+const DescriptionDetail = ({ product }: { product: IProduct }) => {
   const [isActive, setIsActive] = useState(TAB_INDEX.DescriptionProductTab);
 
   return (
@@ -77,9 +77,11 @@ const Linked = ({ product }: { product: IProduct }) => {
       </div>
 
       <div className="py-4 content">
-        {isActive === TAB_INDEX.DescriptionProductTab && <DescriptionProduct />}
+        {isActive === TAB_INDEX.DescriptionProductTab && (
+          <DescriptionProduct product={product} />
+        )}
         {isActive === TAB_INDEX.ReviewsProductTab && (
-          <ReviewsProduct product={product} />
+          <ReviewsProduct productId={product.id} />
         )}
         {isActive === TAB_INDEX.InfoPaymentTab && <InfoPayments />}
       </div>
@@ -87,4 +89,4 @@ const Linked = ({ product }: { product: IProduct }) => {
   );
 };
 
-export default Linked;
+export default DescriptionDetail;

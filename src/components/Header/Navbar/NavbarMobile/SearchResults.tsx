@@ -10,6 +10,8 @@ import { TfiAngleRight } from 'react-icons/tfi';
 
 import styles from '../../SearchSection/styles.module.scss';
 import { dataSearch } from '../../SearchSection/SearchBar';
+import Product from '@/api/Product';
+import { IProduct } from '@/config/entities';
 
 interface ISearchResults {
   handleOpenSearchResultPanel: Function;
@@ -19,19 +21,24 @@ const SearchResults = (props: ISearchResults) => {
   const { handleOpenSearchResultPanel } = props;
   const [searchValue, setSearchValueInput] = useState('');
 
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<IProduct[]>([]);
   const [searching, setSearching] = useState(false);
 
-  const handleSearch = () => {
-    if (!searchValue.trim()) {
-      return;
-    }
+  const handleSearch = async () => {
+    try {
+      if (!searchValue.trim()) {
+        return;
+      }
 
-    setSearching(true);
-    setTimeout(() => {
-      setSearchResults(dataSearch);
+      setSearching(true);
+      const { data } = await Product.search(searchValue);
+
+      setSearchResults(data);
+    } catch (error) {
+      console.log('error', error);
+    } finally {
       setSearching(false);
-    }, 2000);
+    }
   };
 
   return (
@@ -75,15 +82,21 @@ const SearchResults = (props: ISearchResults) => {
           searchResults.map((result) => (
             <Link
               key={result.id}
-              href={`/san-pham/${result.id}`}
+              href={`/${result.category.slug}/${result.slug}`}
               onClick={() => handleOpenSearchResultPanel(false)}
             >
               <div className={styles.search_result_item}>
-                <img src="/images/products/product-image.jpg" alt="product" />
+                <img src={result.images[0].imageUrl} alt="product" />
                 <div>
-                  <p className="font-medium">{result.title}</p>
-                  <p className="text-sm">
-                    <strong>Category:</strong> {result.category}
+                  <p className="font-medium">{result.name}</p>
+                  <p className="text-sm mt-1">
+                    <span>Category:</span>{' '}
+                    <Link
+                      href={result.category.slug}
+                      className="hover:underline"
+                    >
+                      {result.category.name}
+                    </Link>
                   </p>
                 </div>
                 <TfiAngleRight

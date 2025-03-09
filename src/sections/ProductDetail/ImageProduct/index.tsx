@@ -11,16 +11,9 @@ import 'swiper/css/thumbs';
 
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import './styles.scss';
+import { ImageProduct } from '@/config/entities';
 
-const images = [
-  'https://swiperjs.com/demos/images/nature-1.jpg',
-  'https://swiperjs.com/demos/images/nature-2.jpg',
-  'https://swiperjs.com/demos/images/nature-3.jpg',
-  'https://swiperjs.com/demos/images/nature-4.jpg',
-  'https://swiperjs.com/demos/images/nature-5.jpg',
-];
-
-const Images = () => {
+const Images = ({ images }: { images: ImageProduct[] }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   return (
@@ -32,14 +25,15 @@ const Images = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="swiper-container"
       >
-        {images.map((img: string, idx: number) => (
-          <SwiperSlide key={idx}>
-            <img
-              src={img}
-              className="md:h-[370px] sm:h-[330px] h-[280px] w-full object-cover rounded-[8px]"
-            />
-          </SwiperSlide>
-        ))}
+        {images &&
+          images.map((img: ImageProduct) => (
+            <SwiperSlide key={img.id}>
+              <img
+                src={img.imageUrl}
+                className="md:h-[370px] sm:h-[330px] h-[280px] w-full object-cover rounded-[8px]"
+              />
+            </SwiperSlide>
+          ))}
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
@@ -50,17 +44,18 @@ const Images = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mt-3 slide-thumb"
       >
-        {images.map((img: string, idx: number) => (
-          <SwiperSlide
-            key={idx}
-            className="max-h-[70px] p-0 h-full rounded-[7px] cursor-pointer"
-          >
-            <img
-              src={img}
-              className="object-cover w-full h-[70px] rounded-[8px]"
-            />
-          </SwiperSlide>
-        ))}
+        {images &&
+          images.map((img: ImageProduct) => (
+            <SwiperSlide
+              key={img.id}
+              className="max-h-[70px] p-0 h-full rounded-[7px] cursor-pointer"
+            >
+              <img
+                src={img.imageUrl}
+                className="object-cover w-full h-[70px] rounded-[8px]"
+              />
+            </SwiperSlide>
+          ))}
       </Swiper>
     </>
   );

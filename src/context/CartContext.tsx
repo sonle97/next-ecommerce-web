@@ -24,17 +24,18 @@ export enum UnitOfMeasure {
   box = 'box',
 }
 
-export interface ProductItem {
+export interface ProductItemCart {
   id: number;
   name: string;
   image: string;
   quantity: number;
   unit_of_measure: UnitOfMeasure;
 }
-type CartState = ProductItem[];
+
+type CartState = ProductItemCart[];
 
 type CartAction =
-  | { type: ACTION_TYPES.ADD_PRODUCT; payload: ProductItem }
+  | { type: ACTION_TYPES.ADD_PRODUCT; payload: ProductItemCart }
   | { type: ACTION_TYPES.REMOVE_PRODUCT; payload: number }
   | { type: ACTION_TYPES.UPDATE_CART; payload: CartState }
   | {

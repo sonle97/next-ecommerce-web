@@ -2,7 +2,7 @@
 
 import { BsCart4 } from 'react-icons/bs';
 import { ACTION_TYPES, UnitOfMeasure, useCart } from '@/context/CartContext';
-import { IProduct } from '@/config/data/products';
+import { IProduct } from '@/config/entities';
 
 interface IAddToCart {
   product: IProduct;
@@ -14,15 +14,15 @@ const AddToCart = (props: IAddToCart) => {
   const { dispatch, handleOpenCartSlider } = useCart();
 
   const addToCart = () => {
-    const _product = {
+    const newProduct = {
       id: product.id,
       name: product.name,
-      image: product.image,
+      image: product.images[0].imageUrl,
       quantity: 1,
       unit_of_measure: UnitOfMeasure.box,
     };
 
-    dispatch({ type: ACTION_TYPES.ADD_PRODUCT, payload: _product });
+    dispatch({ type: ACTION_TYPES.ADD_PRODUCT, payload: newProduct });
     handleOpenCartSlider(true);
   };
 

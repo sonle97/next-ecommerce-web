@@ -1,88 +1,55 @@
 'use client';
 
+import { IProduct } from '@/config/entities';
 import React, { useState } from 'react';
 import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md';
 
-const content = `Thật tiện lợi khi sử dụng hệ tủ đồ bằng nhôm kính, chẳng hạn như tủ thuốc,
-    tủ kệ chứa điện thoại, hay các tủ kệ cho các cửa hàng thời trang. Với sản
-    phẩm này khách hàng có thể yên tâm sử dụng mà không lo bị ẩm mốc, cong vênh
-    hay mối mọt như các sản phẩm gỗ thông thường, Một ưu điểm nữa khi sử dụng tủ
-    nhôm kính là giá thành rẻ hơn rất nhiều so với sản phẩm làm từ các chất liệu
-    khác và độ bền thậm chí còn hơn hẳn. Còn rất nhiều sản phẩm từ nhôm kính
-    khác mà chúng tôi chưa thể giới thiệu trong bài viết này ngay được, quý
-    khách nào có những ý tưởng và giải pháp muốn sử dụng hệ nhôm kính cho không
-    gian gia đình mình có thể liên hệ với chúng tôi, chúng tôi sẽ đến tận nơi để
-    tư vấn và đưa gia ý tưởng kết hợp cùng với tính năng hợp lý.
-    Thật tiện lợi khi sử dụng hệ tủ đồ bằng nhôm kính, chẳng hạn như tủ thuốc,
-    tủ kệ chứa điện thoại, hay các tủ kệ cho các cửa hàng thời trang. Với sản
-    phẩm này khách hàng có thể yên tâm sử dụng mà không lo bị ẩm mốc, cong vênh
-    hay mối mọt như các sản phẩm gỗ thông thường, Một ưu điểm nữa khi sử dụng tủ
-    nhôm kính là giá thành rẻ hơn rất nhiều so với sản phẩm làm từ các chất liệu
-    khác và độ bền thậm chí còn hơn hẳn. Còn rất nhiều sản phẩm từ nhôm kính
-    khác mà chúng tôi chưa thể giới thiệu trong bài viết này ngay được, quý
-    khách nào có những ý tưởng và giải pháp muốn sử dụng hệ nhôm kính cho không
-    gian gia đình mình có thể liên hệ với chúng tôi, chúng tôi sẽ đến tận nơi để
-    tư vấn và đưa gia ý tưởng kết hợp cùng với tính năng hợp lý.
-    Thật tiện lợi khi sử dụng hệ tủ đồ bằng nhôm kính, chẳng hạn như tủ thuốc,
-    tủ kệ chứa điện thoại, hay các tủ kệ cho các cửa hàng thời trang. Với sản
-    phẩm này khách hàng có thể yên tâm sử dụng mà không lo bị ẩm mốc, cong vênh
-    hay mối mọt như các sản phẩm gỗ thông thường, Một ưu điểm nữa khi sử dụng tủ
-    nhôm kính là giá thành rẻ hơn rất nhiều so với sản phẩm làm từ các chất liệu
-    khác và độ bền thậm chí còn hơn hẳn. Còn rất nhiều sản phẩm từ nhôm kính
-    khác mà chúng tôi chưa thể giới thiệu trong bài viết này ngay được, quý
-    khách nào có những ý tưởng và giải pháp muốn sử dụng hệ nhôm kính cho không
-    gian gia đình mình có thể liên hệ với chúng tôi, chúng tôi sẽ đến tận nơi để
-    tư vấn và đưa gia ý tưởng kết hợp cùng với tính năng hợp lý.
-    Thật tiện lợi khi sử dụng hệ tủ đồ bằng nhôm kính, chẳng hạn như tủ thuốc,
-    tủ kệ chứa điện thoại, hay các tủ kệ cho các cửa hàng thời trang. Với sản
-    phẩm này khách hàng có thể yên tâm sử dụng mà không lo bị ẩm mốc, cong vênh
-    hay mối mọt như các sản phẩm gỗ thông thường, Một ưu điểm nữa khi sử dụng tủ
-    nhôm kính là giá thành rẻ hơn rất nhiều so với sản phẩm làm từ các chất liệu
-    khác và độ bền thậm chí còn hơn hẳn. Còn rất nhiều sản phẩm từ nhôm kính
-    khác mà chúng tôi chưa thể giới thiệu trong bài viết này ngay được, quý
-    khách nào có những ý tưởng và giải pháp muốn sử dụng hệ nhôm kính cho không
-    gian gia đình mình có thể liên hệ với chúng tôi, chúng tôi sẽ đến tận nơi để
-    tư vấn và đưa gia ý tưởng kết hợp cùng với tính năng hợp lý.`;
-
 const ReadMore = ({ content }: { content: string }) => {
   const [isReadMore, setIsReadMore] = useState(false);
+
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
+
+  const contentShow = isReadMore ? content : content.slice(0, 1500);
+  const contentLength = content.length;
+
   return (
     <>
-      <div className={`${isReadMore ? '' : 'h-[220px]'} overflow-hidden`}>
-        {content}
-      </div>
+      <div dangerouslySetInnerHTML={{ __html: contentShow }} />
 
-      <div
-        onClick={toggleReadMore}
-        className="cursor-pointer text-main text-center relative h-[40px] leading-[40px]"
-      >
-        <span className="flex items-center justify-center font-[500] text-base">
-          {!isReadMore ? (
-            <>
-              Xem thêm <MdArrowDropDown size={35} />
-            </>
-          ) : (
-            <>
-              Thu gọn <MdArrowDropUp size={35} />
-            </>
+      {contentLength > 1500 && (
+        <div
+          onClick={toggleReadMore}
+          className="cursor-pointer text-main text-center relative h-[40px] leading-[40px]"
+        >
+          <span className="flex items-center justify-center font-[500] text-base">
+            {!isReadMore ? (
+              <>
+                Xem thêm <MdArrowDropDown size={35} />
+              </>
+            ) : (
+              <>
+                Thu gọn <MdArrowDropUp size={35} />
+              </>
+            )}
+          </span>
+
+          {!isReadMore && (
+            <div
+              className="h-[40px] absolute -top-[35px] w-full"
+              style={{
+                background: `linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))`,
+              }}
+            />
           )}
-        </span>
-
-        {!isReadMore && (
-          <div
-            className="h-[40px] absolute -top-[35px] w-full"
-            style={{
-              background: `linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))`,
-            }}
-          />
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 };
 
-const DescriptionProduct = () => <ReadMore content={content} />;
+const DescriptionProduct = ({ product }: { product: IProduct }) => (
+  <ReadMore content={product.description} />
+);
 export default DescriptionProduct;

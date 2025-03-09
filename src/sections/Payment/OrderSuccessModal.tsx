@@ -1,12 +1,17 @@
 import { useRef } from 'react';
+import moment from 'moment';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Modal, { ModalProps } from '@/components/ui/Modal';
 import { ACTION_TYPES, useCart } from '@/context/CartContext';
 
-interface IOrderSuccessModal extends ModalProps {}
+interface IOrderSuccessModal extends ModalProps {
+  orders: any;
+}
 
 const OrderSuccessModal = (props: IOrderSuccessModal) => {
+  const { orders } = props;
+
   const modalRef = useRef<any>(null);
   const router = useRouter();
   const { dispatch } = useCart();
@@ -15,6 +20,12 @@ const OrderSuccessModal = (props: IOrderSuccessModal) => {
     modalRef.current.close();
     router.push('/cua-hang');
 
+    // Reset cart
+    dispatch({ type: ACTION_TYPES.CLEAR_CART });
+  }
+
+  function onViewOrderDetail(): void {
+    router.push('/chi-tiet-don-hang');
     // Reset cart
     dispatch({ type: ACTION_TYPES.CLEAR_CART });
   }
@@ -33,13 +44,30 @@ const OrderSuccessModal = (props: IOrderSuccessModal) => {
     >
       <ul className="mt-4 list-disc pl-5">
         <li>
-          <strong>Mã đơn hàng:</strong> A124
+          <strong>Mã đơn hàng:</strong>{' '}
+          <span
+            className="font-bold underline text-main cursor-pointer"
+            onClick={onViewOrderDetail}
+          >
+            #{orders.orderId}
+          </span>
+        </li>
+        <li className="my-2">
+          <strong>Ngày đặt hàng:</strong>{' '}
+          {moment(orders.createdAt).format('DD/MM/YYYY')}
+        </li>
+        <li className="my-2">
+          <strong>Phương thức thanh toán:</strong> Thanh toán khi nhận hàng hoặc
+          chuyển khoản
         </li>
         <li>
-          <strong>Ngày đặt hàng:</strong> 20/10/2021
-        </li>
-        <li>
-          <strong>Phương thức thanh toán:</strong> Thanh toán khi nhận hàng
+          <strong>Xem chi tiết đơn hàng tại</strong>{' '}
+          <span
+            className="font-bold underline text-main cursor-pointer"
+            onClick={onViewOrderDetail}
+          >
+            đây
+          </span>
         </li>
       </ul>
 

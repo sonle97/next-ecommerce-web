@@ -4,6 +4,7 @@ import { MdOutlineChevronRight } from 'react-icons/md';
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import Image from 'next/image';
 import { BsInstagram, BsYoutube } from 'react-icons/bs';
+import { information } from '@/config/data/information';
 
 interface ItemLinkProps {
   label: string;
@@ -68,10 +69,18 @@ const Footer = () => {
             />
             <p className="font-bold mt-8">Kết nối với chúng tôi</p>
             <div className="flex items-center gap-4 mt-3">
-              <FaFacebookF size={25} className="cursor-pointer" />
-              <BsInstagram size={25} className="cursor-pointer" />
-              <FaTiktok size={25} className="cursor-pointer" />
-              <BsYoutube size={25} className="cursor-pointer" />
+              <a href={information.facebook} target="_blank" rel="noreferrer">
+                <FaFacebookF size={25} className="cursor-pointer" />
+              </a>
+              <a href={information.instagram} target="_blank" rel="noreferrer">
+                <BsInstagram size={25} className="cursor-pointer" />
+              </a>
+              <a href={information.tiktok} target="_blank" rel="noreferrer">
+                <FaTiktok size={25} className="cursor-pointer" />
+              </a>
+              <a href={information.youtube} target="_blank" rel="noreferrer">
+                <BsYoutube size={25} className="cursor-pointer" />
+              </a>
             </div>
           </div>
           <div>
@@ -79,21 +88,27 @@ const Footer = () => {
             <ul>
               <li className="flex items-start mb-3">
                 <FaHome className="mr-2 text-green-2" size={20} />
-                Địa chỉ: Khu phố Chiêu Liêu, Phường Tân Đông Hiệp,
-                <br /> Dĩ An, Bình Dương
+                <span className="max-w-[250px]">{information.address}</span>
               </li>
               <li className="flex items-center mb-3">
                 <AiFillPhone className="mr-2 text-green-2" size={20} />
-                <span>Điện thoại: 0347.366.345</span>
+                <>
+                  {information.phones.map((phone, index) => (
+                    <span key={index}>
+                      &nbsp;{phone}
+                      {index < information.phones.length - 1 ? ' - ' : ''}
+                    </span>
+                  ))}
+                </>
               </li>
-              <li className="flex items-center mb-3">
-                <AiOutlineMail className="mr-2 text-green-2" size={20} />
-                Email1: son.lequang97@gmail.com
-              </li>
-              <li className="flex items-center">
-                <AiOutlineMail className="mr-2 text-green-2" size={20} />
-                Email2: sale.xxx@gmail.com
-              </li>
+
+              {information.emails.map((email, index) => (
+                <li key={index} className="flex items-center mb-3">
+                  <AiOutlineMail className="mr-2 text-green-2" size={20} />
+                  {email}
+                </li>
+              ))}
+
               <li className="flex items-center mt-8">
                 <Image
                   src="/noti_logo.png"
@@ -107,7 +122,7 @@ const Footer = () => {
           <div>
             <h3 className="mb-2 capitalize">Fanpage</h3>
             <iframe
-              src="https://www.facebook.com/son.lequang.97"
+              src={information.facebook}
               width="250"
               height="250"
             ></iframe>
@@ -151,7 +166,7 @@ const Footer = () => {
             <div className="sm:block hidden">
               <h3 className="mb-2 capitalize">Fanpage</h3>
               <iframe
-                src="https://www.facebook.com/son.lequang.97?enablejsapi=1"
+                src={information.facebook}
                 width="150"
                 height="150"
                 className="sm:w-[150px] sm:h-[150px] w-[100px] h-[100px]"
@@ -167,20 +182,26 @@ const Footer = () => {
                     className="mr-2 text-green-2 min-w-[20px]"
                     size={20}
                   />
-                  Khu phố Chiêu Liêu, Phường Tân Đông Hiệp, Dĩ An, Bình Dương
+                  <span className="max-w-[300px]">{information.address}</span>
                 </li>
                 <li className="flex items-center mb-3">
                   <AiFillPhone className="mr-2 text-green-2" size={20} />
-                  0347.366.345
+                  <>
+                    {information.phones.map((phone, index) => (
+                      <span key={index}>
+                        {phone}
+                        {index < information.phones.length - 1 ? ` - ` : ''}
+                      </span>
+                    ))}
+                  </>
                 </li>
-                <li className="flex items-center mb-3">
-                  <AiOutlineMail className="mr-2 text-green-2" size={20} />
-                  son.lequang97@gmail.com
-                </li>
-                <li className="flex items-center">
-                  <AiOutlineMail className="mr-2 text-green-2" size={20} />
-                  sale.xxx@gmail.com
-                </li>
+
+                {information.emails.map((email, index) => (
+                  <li key={index} className="flex items-center mb-3">
+                    <AiOutlineMail className="mr-2 text-green-2" size={20} />
+                    {email}
+                  </li>
+                ))}
               </ul>
             </div>
             <Image
@@ -195,10 +216,22 @@ const Footer = () => {
             <div>
               <p className="font-bold">Kết nối với chúng tôi</p>
               <div className="flex items-center gap-4 mt-3">
-                <FaFacebookF size={25} className="cursor-pointer" />
-                <BsInstagram size={25} className="cursor-pointer" />
-                <FaTiktok size={25} className="cursor-pointer" />
-                <BsYoutube size={25} className="cursor-pointer" />
+                <a href={information.facebook} target="_blank" rel="noreferrer">
+                  <FaFacebookF size={25} className="cursor-pointer" />
+                </a>
+                <a
+                  href={information.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <BsInstagram size={25} className="cursor-pointer" />
+                </a>
+                <a href={information.tiktok} target="_blank" rel="noreferrer">
+                  <FaTiktok size={25} className="cursor-pointer" />
+                </a>
+                <a href={information.youtube} target="_blank" rel="noreferrer">
+                  <BsYoutube size={25} className="cursor-pointer" />
+                </a>
               </div>
             </div>
 

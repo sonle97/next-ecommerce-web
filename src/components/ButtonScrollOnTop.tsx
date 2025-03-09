@@ -20,15 +20,15 @@ const ButtonScrollOnTop = (props: any) => {
 
   return (
     <div
-      className={`${isShowButtonScrollToTop ? 'opacity-50' : 'opacity-0'} ${
-        className && className
-      } bg-main w-[40px] h-[35px] fixed bottom-[10px] right-[20px] rounded-[5px]
-      border-0 flex justify-center items-center cursor-pointer hover:${
-        isShowButtonScrollToTop ? 'opacity-100' : 'opacity-0'
-      } transition-opacity`}
+      className={`${
+        className ? className : ''
+      } bg-main w-10 h-10 fixed bottom-[12px] right-[20px] rounded-full
+      border-0 flex justify-center items-center cursor-pointer ${
+        isShowButtonScrollToTop ? 'opacity-50' : '!opacity-0'
+      } transition-opacity scroll-to-top hover:opacity-100`}
       onClick={scrollToTop}
     >
-      <FaAngleDoubleUp className='icon-double-up text-[17px] text-white' />
+      <FaAngleDoubleUp className="icon-double-up text-[17px] text-white" />
     </div>
   );
 };

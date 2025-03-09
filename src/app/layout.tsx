@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import { cn } from '@/lib/utils';
 import { CartProvider } from '@/context/CartContext';
 import Header from '@/components/Header';
+import SupportButtons from '@/components/SupportButtons';
 import './globals.css';
 import './app.scss';
 
@@ -26,7 +27,9 @@ export default function RootLayout({
           {children}
           <Footer />
         </CartProvider>
+
         <ButtonScrollOnTop />
+        <SupportButtons />
       </body>
     </html>
   );

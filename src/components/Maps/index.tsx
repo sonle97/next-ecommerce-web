@@ -1,13 +1,15 @@
-"use client";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import Loading from "../Loading";
+'use client';
+
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import Loading from '../Loading';
+import config from '../../config';
 
 const containerStyle = {
-  width: "100%",
-  height: "100%",
+  width: '100%',
+  height: '100%',
 };
 
-const centre = {
+const center = {
   lat: 37.437041393899676,
   lng: -4.191635586788259,
 };
@@ -15,16 +17,16 @@ const centre = {
 const GoogleMapComponent = () => {
   return (
     <LoadScript
-      googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
+      googleMapsApiKey={config.googleMapsApiKey}
       loadingElement={<Loading className="mt-3" />}
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
         mapContainerClassName="map-container"
-        center={centre}
+        center={center}
         zoom={10}
       >
-        <Marker position={centre} />
+        <Marker position={center} />
       </GoogleMap>
     </LoadScript>
   );

@@ -5,12 +5,23 @@ import Aos from 'aos';
 
 import './styles.scss';
 import CategoryItem from './CategoryItem';
-import { categories, ICategories } from '@/config/data/categories';
+import { useFetch } from '@/hooks/useFetch';
+import { ICategory } from '@/config/entities';
+import config from '@/config';
 
 function Categories() {
   useEffect(function () {
     Aos.init({ duration: 1500, once: true });
   }, []);
+
+  const { data: categories, isLoading } = useFetch<ICategory[]>(
+    'categories?client=true',
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  if (isLoading) return null;
 
   return (
     <section>
@@ -28,9 +39,8 @@ function Categories() {
       </h2>
 
       <div className="flex items-start justify-start xl:gap-[30px] lg:gap-[25px] gap-[15px] flex-wrap mb-[20px]">
-        {categories
-          .filter((category) => !category.isHideOnPage)
-          .map((category: ICategories, index: number) => (
+        {categories &&
+          categories.map((category: ICategory, index: number) => (
             <CategoryItem key={index} category={category} dataAos="fade-up" />
           ))}
       </div>

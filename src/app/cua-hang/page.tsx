@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 
 import AllProducts from '@/sections/AllProducts';
+import config from '@/config';
 
 export const metadata: Metadata = {
   title: 'Cửa hàng',
@@ -8,10 +9,30 @@ export const metadata: Metadata = {
   icons: 'ly-icon.png',
 };
 
-export default function Products() {
+const fetchCategories = async () => {
+  try {
+    const res = await fetch(
+      `${config.apiServerUrl}/api/categories?client=true`,
+      {
+        cache: 'force-cache',
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    return res.json();
+  } catch (error) {
+    return [];
+  }
+};
+
+export default async function Products() {
+  const categories = await fetchCategories();
   return (
     <main className="container">
-      <AllProducts />
+      <AllProducts categories={categories} />
     </main>
   );
 }

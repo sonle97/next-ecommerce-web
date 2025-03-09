@@ -1,48 +1,50 @@
-"use client";
-import { useState } from "react";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+'use client';
+import { useState } from 'react';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
-import { FiSearch } from "react-icons/fi";
-import styles from "./styles.module.scss";
-import SearchResults from "./SearchResults";
+import { FiSearch } from 'react-icons/fi';
+import styles from './styles.module.scss';
+import SearchResults from './SearchResults';
+import Product from '@/api/Product';
+import { IProduct } from '@/config/entities';
 
 export const dataSearch = [
   {
     id: 1,
-    title: "test",
-    category: "category a",
+    title: 'test',
+    category: 'category a',
   },
   {
     id: 2,
-    title: "test",
-    category: "category a",
+    title: 'test',
+    category: 'category a',
   },
   {
     id: 3,
-    title: "test",
-    category: "category a",
+    title: 'test',
+    category: 'category a',
   },
   {
     id: 4,
-    title: "test",
-    category: "category a",
+    title: 'test',
+    category: 'category a',
   },
   {
     id: 5,
-    title: "test",
-    category: "category a",
+    title: 'test',
+    category: 'category a',
   },
   {
     id: 6,
-    title: "test",
-    category: "category a",
+    title: 'test',
+    category: 'category a',
   },
 ];
 
 function SearchBar() {
-  const [searchValue, setSearchValueInput] = useState("");
+  const [searchValue, setSearchValueInput] = useState('');
   const [isSearchResultPanelOpen, setIsSearchResultPanelOpen] = useState(false);
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<IProduct[]>([]);
   const [searching, setSearching] = useState(false);
 
   const handleChangeSearchValue = (value: string) => {
@@ -52,17 +54,22 @@ function SearchBar() {
     }
   };
 
-  const handleSearch = () => {
-    if (!searchValue.trim()) {
-      return;
-    }
+  const handleSearch = async () => {
+    try {
+      if (!searchValue.trim()) {
+        return;
+      }
 
-    setSearching(true);
-    setTimeout(() => {
-      setSearchResults(dataSearch);
+      setSearching(true);
+      const { data } = await Product.search(searchValue);
+
+      setSearchResults(data);
       setIsSearchResultPanelOpen(true);
+    } catch (error) {
+      console.log('error', error);
+    } finally {
       setSearching(false);
-    }, 2000);
+    }
   };
 
   const handleOpenSearchResultPanel = (isOpen: boolean) => {
@@ -84,7 +91,7 @@ function SearchBar() {
               className="text-white text-sm mx-auto"
               size={20}
               style={{
-                animation: "spin 1s linear infinite",
+                animation: 'spin 1s linear infinite',
               }}
             />
           ) : (

@@ -8,7 +8,9 @@ import Image from 'next/image';
 
 import styles from './styles.module.scss';
 import { useWindowScrollPositions } from '@/hooks/useWindowScrollPositions';
-import { categories, ICategories } from '@/config/data/categories';
+import config from '@/config';
+import { ICategory } from '@/config/entities';
+import { useFetch } from '@/hooks/useFetch';
 
 function Categories() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
@@ -17,6 +19,13 @@ function Categories() {
   const isShowButtonScrollToTop = scrollY > 200;
 
   const isHomePage = pathname === '/';
+
+  const { data: categories, isLoading } = useFetch<ICategory[]>(
+    'categories?client=true',
+    {
+      revalidateOnFocus: false,
+    }
+  );
 
   useEffect(() => {
     setIsCategoriesOpen(isHomePage);
@@ -34,6 +43,8 @@ function Categories() {
     }
   }, [isShowButtonScrollToTop, isHomePage]);
 
+  if (isLoading) return;
+
   return (
     <div className="relative w-1/4 h-full lg:block hidden">
       <div
@@ -48,25 +59,26 @@ function Categories() {
         <span className="font-medium text-base">Danh mục sản phẩm</span>
       </div>
       {isCategoriesOpen && (
-        <ul className={styles.nav_categories}>
-          {categories.map((category: ICategories) => {
-            return (
-              <li key={category.id} className="border-b">
-                <Link
-                  href={`/${category.slug}`}
-                  className="flex items-center gap-3"
-                >
-                  <Image
-                    src={category.icon}
-                    alt={category.title}
-                    width={25}
-                    height={25}
-                  />
-                  <div className="flex items-center">{category.title}</div>
-                </Link>
-              </li>
-            );
-          })}
+        <ul className={`${styles.nav_categories} overflow-y-auto`}>
+          {categories &&
+            categories.map((category: ICategory) => {
+              return (
+                <li key={category.id} className="border-b">
+                  <Link
+                    href={`/${category.slug}`}
+                    className="flex items-center gap-3"
+                  >
+                    <Image
+                      src={category.logoURL}
+                      alt={category.name}
+                      width={25}
+                      height={25}
+                    />
+                    <div className="flex items-center">{category.name}</div>
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
       )}
     </div>

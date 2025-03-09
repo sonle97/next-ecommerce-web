@@ -2,9 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import './styles.scss';
-import { IProduct } from '@/config/data/products';
-import { categories } from '@/config/data/categories';
 import AddToCartButton from '../AddToCartButton';
+import { IProduct } from '@/config/entities';
 
 interface ProductProps {
   product: IProduct;
@@ -13,9 +12,6 @@ interface ProductProps {
 
 const Product = (props: ProductProps) => {
   const { product, className } = props;
-  const categorySlug = categories.find(
-    (category) => category.id === product.categoryId
-  )?.slug;
 
   return (
     <div
@@ -25,20 +21,20 @@ const Product = (props: ProductProps) => {
         hover:shadow-product-item product cursor-pointer overflow-hidden`}
     >
       <Link
-        href={`/${categorySlug}/${product.slug}`}
+        href={`/${product?.category?.slug}/${product.slug}`}
         className="rounded-tl-lg rounded-tr-lg"
       >
         <Image
-          src={product.image}
+          src={(product?.images && product?.images[0].imageUrl) || ''}
           alt="product"
-          width="300"
-          height="300"
-          className="rounded-tl-[5px] rounded-tr-[5px] w-full h-auto"
+          width="350"
+          height="350"
+          className="rounded-tl-[5px] rounded-tr-[5px] h-auto"
         />
       </Link>
       <div className="px-2 sm:py-4 py-2 z-1 bg-white w-full text-center rounded-bl-lg rounded-br-lg">
         <Link
-          href={`/${categorySlug}/${product.slug}`}
+          href={`/${product?.category?.slug}/${product.slug}`}
           className="text-blue-3 hover:text-blue-2 lg:font-bold font-medium lg:text-base text-[15px]"
         >
           <p>{product.name}</p>

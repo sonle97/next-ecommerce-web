@@ -1,4 +1,4 @@
-export interface ICategories {
+export interface ICategory {
   id: number;
   title: string;
   slug: string;
@@ -9,7 +9,7 @@ export interface ICategories {
 
 const image = '/images/products/product-image.jpg';
 
-export const categories: ICategories[] = [
+export const categories: ICategory[] = [
   {
     id: 1,
     title: 'Ly giấy',

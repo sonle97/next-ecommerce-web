@@ -11,9 +11,32 @@ import './styles.scss';
 
 import Product from '@/components/Product';
 import TitleSection from '@/components/TitleSection';
-import { products } from '@/config/data/products';
+import { IProduct } from '@/config/entities';
+import { useFetch } from '@/hooks/useFetch';
 
-const RelatedProducts = () => {
+const RelatedProducts = ({
+  categoryId,
+  currentProductId,
+}: {
+  categoryId: number;
+  currentProductId: number;
+}) => {
+  const { data: products } = useFetch<IProduct[]>(
+    `products?client=true&categoryId=${categoryId}`,
+    {
+      revalidateOnFocus: false,
+      caches: ['products'],
+    }
+  );
+
+  const productsFilters = products.filter(
+    (product) => product.id !== currentProductId
+  );
+
+  if (productsFilters.length === 0) {
+    return null;
+  }
+
   return (
     <section>
       <TitleSection title="Sản phẩm tương tự" />
@@ -45,11 +68,12 @@ const RelatedProducts = () => {
         modules={[Autoplay, Navigation]}
         className="swiper-section-container"
       >
-        {products.map((product, idx: number) => (
-          <SwiperSlide key={idx}>
-            <Product product={product} />
-          </SwiperSlide>
-        ))}
+        {productsFilters &&
+          productsFilters.map((product) => (
+            <SwiperSlide key={product.id}>
+              <Product product={product} />
+            </SwiperSlide>
+          ))}
       </Swiper>
     </section>
   );

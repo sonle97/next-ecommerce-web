@@ -6,8 +6,9 @@ import { GoChevronRight } from 'react-icons/go';
 import { usePathname, useRouter } from 'next/navigation';
 
 import Logo from '../../SearchSection/Logo';
-import { categories } from '@/config/data/categories';
 import { NavbarList } from '@/config/data/navbar';
+import { ICategory } from '@/config/entities';
+import { useFetch } from '@/hooks/useFetch';
 
 interface IContentMobileMenu {
   isShowMenuMobile: boolean;
@@ -19,6 +20,13 @@ const ContentMobileMenu = (props: IContentMobileMenu) => {
   const router = useRouter();
   const pathName = usePathname();
 
+  const { data: categories, isLoading } = useFetch<ICategory[]>(
+    'categories?client=true',
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
   useEffect(() => {
     if (isShowMenuMobile) {
       document.body.classList.add('overflow-hidden');
@@ -26,6 +34,8 @@ const ContentMobileMenu = (props: IContentMobileMenu) => {
       document.body.classList.remove('overflow-hidden');
     }
   }, [isShowMenuMobile]);
+
+  if (isLoading) return null;
 
   return (
     <div
@@ -62,23 +72,24 @@ const ContentMobileMenu = (props: IContentMobileMenu) => {
 
       <div className="bg-white mt-1 h-full">
         <div className="flex items-start gap-3 flex-wrap p-5">
-          {categories.map((category) => (
-            <Link
-              key={category.id}
-              href={`/${category.slug}`}
-              className="relative flex items-center text-center px-3 justify-center md:w-[calc(33%_-_6px)] w-[calc(50%_-_6px)]
+          {categories &&
+            categories.map((category) => (
+              <Link
+                key={category.id}
+                href={`/${category.slug}`}
+                className="relative flex items-center text-center px-3 justify-center md:w-[calc(33%_-_6px)] w-[calc(50%_-_6px)]
                 h-[100px] rounded-[8px] cursor-pointer bg-cover bg-center bg-no-repeat text-[15px] font-medium text-white
                 before:content-[''] before:w-full before:h-full before:absolute before:z-[1] before:rounded-[8px] before:bg-[rgba(0,0,0,0.3)]"
-              style={{
-                backgroundImage: `url(${category.image})`,
-              }}
-              onClick={() => {
-                setIsShowMenuMobile(false);
-              }}
-            >
-              <span className="z-[2]">{category.title}</span>
-            </Link>
-          ))}
+                style={{
+                  backgroundImage: `url(${category.imageURL})`,
+                }}
+                onClick={() => {
+                  setIsShowMenuMobile(false);
+                }}
+              >
+                <span className="z-[2]">{category.name}</span>
+              </Link>
+            ))}
         </div>
       </div>
     </div>
