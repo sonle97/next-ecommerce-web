@@ -1,5 +1,5 @@
-import NewsPageSection from "@/sections/NewsPage";
+import ArticlesPage from "@/sections/ArticlesPage";
 
 export default function NewsPage() {
-  return <NewsPageSection />;
+  return <ArticlesPage />;
 }

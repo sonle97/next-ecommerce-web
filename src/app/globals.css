@@ -91,7 +91,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -140,4 +140,22 @@ select {
   100% {
     transform: rotate(360deg);
   }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  display: flex;
+  animation: marquee 10s linear infinite;
+}
+
+.bg-gradient {
+  @apply bg-gradient-to-b from-blue-7 to-blue-8;
 }

@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { TfiClose } from 'react-icons/tfi';
-import Image from 'next/image';
-import { RxUpdate } from 'react-icons/rx';
-import Link from 'next/link';
-import { BiArrowBack } from 'react-icons/bi';
+import { useEffect, useState } from "react";
+import { TfiClose } from "react-icons/tfi";
+import Image from "next/image";
+import { RxUpdate } from "react-icons/rx";
+import Link from "next/link";
+import { BiArrowBack } from "react-icons/bi";
 
-import { Button } from '@/components/ui/button';
-import { useCart, UnitOfMeasure, ACTION_TYPES } from '@/context/CartContext';
+import { Button } from "@/components/ui/button";
+import { useCart, ACTION_TYPES } from "@/context/CartContext";
 
 const CartSection = () => {
   const { cart, dispatch } = useCart();
@@ -31,17 +31,6 @@ const CartSection = () => {
   const updateQuantity = (productId: number, quantity: number) => {
     const newCartDefaults = cartDefaults.map((product) =>
       product.id === productId ? { ...product, quantity } : product
-    );
-
-    setCartDefaults(newCartDefaults);
-  };
-
-  const updateUnitOfMeasure = (
-    productId: number,
-    unit_of_measure: UnitOfMeasure
-  ) => {
-    const newCartDefaults = cartDefaults.map((product) =>
-      product.id === productId ? { ...product, unit_of_measure } : product
     );
 
     setCartDefaults(newCartDefaults);
@@ -87,7 +76,7 @@ const CartSection = () => {
                   <th className="p-2 border-b-[3px]">Mã SP</th>
                   <th className="p-2 border-b-[3px]">Sản phẩm</th>
                   <th className="p-2 border-b-[3px]">Số lượng</th>
-                  <th className="p-2 border-b-[3px]">Đơn vị tính</th>
+                  <th className="p-2 border-b-[3px]">Tổng tiền</th>
                   <th className="p-2 border-b-[3px]"></th>
                 </tr>
               </thead>
@@ -96,11 +85,11 @@ const CartSection = () => {
                 {cartDefaults.map((item) => (
                   <tr key={item.id}>
                     <td className="px-2 py-4 border-b text-center">
-                      <span className="font-medium">{item.id}</span>
+                      <span className="font-medium">{item.code}</span>
                     </td>
 
                     <td className="px-2 py-4 border-b">
-                      <div className="flex items-center">
+                      <div className="flex items-center justify-center">
                         <Image
                           src={item.image}
                           alt={item.name}
@@ -108,7 +97,9 @@ const CartSection = () => {
                           height={80}
                           className="rounded-md"
                         />
-                        <span className="ml-4 font-medium">{item.name}</span>
+                        <span className="ml-4 font-medium max-w-[200px]">
+                          {item.name}
+                        </span>
                       </div>
                     </td>
 
@@ -132,15 +123,7 @@ const CartSection = () => {
                             value={item.quantity}
                             className="w-[60px] px-1.5 text-center h-[35px] focus:outline-none appearance-none hover:appearance-none bg-white border border-[#ddd] shadow-input"
                             onChange={(e) => {
-                              let value = Number(e.target.value);
-                              if (value < 0) {
-                                value = 1;
-                              }
-
-                              if (value > 9999) {
-                                value = 9999;
-                              }
-
+                              const value = Number(e.target.value);
                               updateQuantity(item.id, value);
                             }}
                           />
@@ -150,28 +133,19 @@ const CartSection = () => {
                             className="w-[30px] text-center focus:outline-none h-[35px] font-bold bg-[#f9f9f9] border border-[#ddd] cursor-pointer rounded-r-[20px] hover:bg-[#f1f1f1] border-l-0"
                             value="+"
                             onClick={() => {
-                              if (item.quantity < 1000) {
-                                updateQuantity(item.id, item.quantity + 1);
-                              }
+                              updateQuantity(item.id, item.quantity + 1);
                             }}
                           />
                         </div>
                       </div>
                     </td>
                     <td className="px-2 py-4 border-b text-center">
-                      <select
-                        defaultValue={item.unit_of_measure}
-                        className="border border-[#ddd] py-1 rounded-[6px] h-[35px] text-sm focus:outline-none font-medium w-[80px]"
-                        onChange={(e) => {
-                          updateUnitOfMeasure(
-                            item.id,
-                            e.target.value as UnitOfMeasure
-                          );
-                        }}
-                      >
-                        <option value={UnitOfMeasure.piece}>Cái</option>
-                        <option value={UnitOfMeasure.box}>Thùng</option>
-                      </select>
+                      <p className="text-[16px] font-bold text-red-1">
+                        {(item.price * item.quantity).toLocaleString("vi-VN", {
+                          style: "currency",
+                          currency: "VND",
+                        })}
+                      </p>
                     </td>
                     <td className="px-2 py-4 border-b text-center">
                       <TfiClose
@@ -192,9 +166,9 @@ const CartSection = () => {
               onClick={() => updateCart()}
             >
               <RxUpdate
-                className={`mr-2 ${isUpdatingCart ? 'animate-spin' : ''}`}
+                className={`mr-2 ${isUpdatingCart ? "animate-spin" : ""}`}
               />
-              <span className={isUpdatingCart ? 'animate-pulse' : ''}>
+              <span className={isUpdatingCart ? "animate-pulse" : ""}>
                 Cập nhật giỏ hàng
               </span>
             </Button>

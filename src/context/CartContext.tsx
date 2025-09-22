@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, {
   createContext,
@@ -7,29 +7,25 @@ import React, {
   useEffect,
   ReactNode,
   useState,
-} from 'react';
+} from "react";
 
 export enum ACTION_TYPES {
-  ADD_PRODUCT = 'ADD_PRODUCT',
-  REMOVE_PRODUCT = 'REMOVE_PRODUCT',
-  UPDATE_CART = 'UPDATE_CART',
-  UPDATE_QUANTITY = 'UPDATE_QUANTITY',
-  UPDATE_UNIT_OF_MEASURE = 'UPDATE_UNIT_OF_MEASURE',
-  CLEAR_CART = 'CLEAR_CART',
-  INITIALIZE_CART = 'INITIALIZE_CART',
-}
-
-export enum UnitOfMeasure {
-  piece = 'piece',
-  box = 'box',
+  ADD_PRODUCT = "ADD_PRODUCT",
+  REMOVE_PRODUCT = "REMOVE_PRODUCT",
+  UPDATE_CART = "UPDATE_CART",
+  UPDATE_QUANTITY = "UPDATE_QUANTITY",
+  UPDATE_UNIT_OF_MEASURE = "UPDATE_UNIT_OF_MEASURE",
+  CLEAR_CART = "CLEAR_CART",
+  INITIALIZE_CART = "INITIALIZE_CART",
 }
 
 export interface ProductItemCart {
   id: number;
+  code: string;
   name: string;
   image: string;
   quantity: number;
-  unit_of_measure: UnitOfMeasure;
+  price: number;
 }
 
 type CartState = ProductItemCart[];
@@ -45,13 +41,6 @@ type CartAction =
         quantity: number;
       };
     }
-  | {
-      type: ACTION_TYPES.UPDATE_UNIT_OF_MEASURE;
-      payload: {
-        id: number;
-        unit_of_measure: UnitOfMeasure;
-      };
-    }
   | { type: ACTION_TYPES.CLEAR_CART }
   | { type: ACTION_TYPES.INITIALIZE_CART; payload: CartState };
 
@@ -62,7 +51,7 @@ const CartContext = createContext<{
   handleOpenCartSlider: (isOpen: boolean) => void;
 } | null>(null);
 
-const CART_STORAGE_KEY = 'sonpack_cart';
+const CART_STORAGE_KEY = "packing_cart";
 
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
@@ -91,13 +80,6 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
           : item
       );
 
-    case ACTION_TYPES.UPDATE_UNIT_OF_MEASURE:
-      return state.map((item) =>
-        item.id === action.payload.id
-          ? { ...item, unit_of_measure: action.payload.unit_of_measure }
-          : item
-      );
-
     case ACTION_TYPES.CLEAR_CART:
       return [];
 
@@ -105,7 +87,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       return action.payload;
 
     default:
-      throw new Error('Unhandled action type');
+      throw new Error("Unhandled action type");
   }
 };
 
@@ -136,12 +118,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (isSliderCartOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [isSliderCartOpen]);
 
@@ -161,7 +143,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
+    throw new Error("useCart must be used within a CartProvider");
   }
   return context;
 };

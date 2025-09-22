@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { TextArea } from '@/components/ui/Input';
-import Maps from '@/components/Maps';
-import { MdLocationOn } from 'react-icons/md';
-import { FaPhoneAlt } from 'react-icons/fa';
-import { IoMail } from 'react-icons/io5';
-import { FaClock } from 'react-icons/fa6';
+import { useState } from "react";
+import { TextArea } from "@/components/ui/Input";
+import { MdLocationOn } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
+import { FaClock } from "react-icons/fa6";
 
-import './styles.scss';
-import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/button';
-import { ModuleNotification } from '@/api/Notification';
-import Notification from '@/api/Notification';
-import SuccessModal from '@/components/SuccessModal';
-import { information } from '@/config/data/information';
+import "./styles.scss";
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/button";
+import { ModuleNotification } from "@/api/Notification";
+import Notification from "@/api/Notification";
+import SuccessModal from "@/components/SuccessModal";
+import { information } from "@/config/data/information";
+import DynamicMap from "@/components/Maps/DynamicMap";
 
 export default function ContactPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -139,7 +139,7 @@ export default function ContactPage() {
 
                   <Button
                     className="mt-4 px-[14px] py-[8px] bg-main text-white flex ml-auto
-                  font-bold rounded-[6px]"
+                  font-medium rounded-[6px]"
                     type="submit"
                     disabled={isLoading}
                   >
@@ -149,7 +149,7 @@ export default function ContactPage() {
               </div>
             </div>
             <div className="xl:w-1/2 w-full">
-              <Maps />
+              <DynamicMap />
             </div>
           </div>
         </section>

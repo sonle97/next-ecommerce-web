@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { Input, TextArea } from '@/components/ui/Input';
-import { Button } from '@/components/ui/button';
-import OrderSuccessModal from './OrderSuccessModal';
-import ButtonLoading from '@/components/Loading/ButtonLoading';
-import { useCart } from '@/context/CartContext';
-import OrderProduct from '@/api/OrderProduct';
+import { useState } from "react";
+import Image from "next/image";
+import { Input, TextArea } from "@/components/ui/Input";
+import { Button } from "@/components/ui/button";
+import OrderSuccessModal from "./OrderSuccessModal";
+import ButtonLoading from "@/components/Loading/ButtonLoading";
+import { useCart } from "@/context/CartContext";
+import OrderProduct from "@/api/OrderProduct";
 
 const PaymentSection = () => {
   const [orders, setOrders] = useState(null);
@@ -25,25 +25,24 @@ const PaymentSection = () => {
         orderItems: cart.map((item) => ({
           productId: item.id,
           quantity: item.quantity,
-          unit_of_measure: item.unit_of_measure,
         })),
       });
 
       const orderIds =
-        typeof window !== 'undefined'
-          ? JSON.parse(localStorage.getItem('orderIds') || '[]')
+        typeof window !== "undefined"
+          ? JSON.parse(localStorage.getItem("orderIds") || "[]")
           : [];
 
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         localStorage.setItem(
-          'orderIds',
+          "orderIds",
           JSON.stringify([...orderIds, data.orderId])
         );
       }
 
       setOrders(data);
     } catch (error) {
-      console.error('Error ordering:', error);
+      console.error("Error ordering:", error);
     } finally {
       setOrdering(false);
     }
@@ -130,14 +129,14 @@ const PaymentSection = () => {
                     <th className="p-2 border-b-[3px]">Mã SP</th>
                     <th className="p-2 border-b-[3px]">Sản phẩm</th>
                     <th className="py-2 border-b-[3px]">Số lượng</th>
-                    <th className="p-2 border-b-[3px]">Đơn vị tính</th>
+                    <th className="p-2 border-b-[3px]">Tổng tiền</th>
                   </tr>
                 </thead>
                 <tbody>
                   {cart.map((item) => (
                     <tr key={item.id}>
                       <td className="p-2 border-b text-center">
-                        <span className="font-medium">{item.id}</span>
+                        <span className="font-medium">{item.code}</span>
                       </td>
                       <td className="p-2 border-b">
                         <div className="flex items-center">
@@ -148,7 +147,7 @@ const PaymentSection = () => {
                             height={50}
                             className="rounded-md"
                           />
-                          <span className="ml-3 font-medium md::text-base text-[14px]">
+                          <span className="ml-3 font-medium md::text-base text-[14px] max-w-[200px]">
                             {item.name}
                           </span>
                         </div>
@@ -156,8 +155,16 @@ const PaymentSection = () => {
                       <td className="p-2 border-b text-center">
                         {item.quantity}
                       </td>
-                      <td className="p-2 border-b text-center">
-                        {item.unit_of_measure === 'piece' ? 'Cái' : 'Thùng'}
+                      <td className="p-2 py-4 border-b text-center">
+                        <p className="text-[16px] font-bold text-red-1">
+                          {(item.price * item.quantity).toLocaleString(
+                            "vi-VN",
+                            {
+                              style: "currency",
+                              currency: "VND",
+                            }
+                          )}
+                        </p>
                       </td>
                     </tr>
                   ))}

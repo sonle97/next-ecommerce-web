@@ -26,12 +26,13 @@ const TitleCategory = (props: TitleCategoryProps) => {
       className="flex items-center justify-between border-b-[2px] border-gray-4 mb-8"
       data-aos="flip-left"
     >
-      <h2 className="border-b-[2px] border-main pb-[7.5px] -mb-[1px]">
+      <h2 className="bg-gradient-to-b from-blue-7 to-blue-8 pr-[40px] mb-[-1px] py-[2px] pl-[15px] rounded-tl-[3px] rounded-tr-[50px] text-white">
         {category.name}
       </h2>
       <Link
         href={category.url}
-        className="flex items-center gap-2 text-white bg-main leading-none hover:bg-main rounded-[5px] py-[10px] px-[12px] text-[15px] font-medium text-base"
+        className="flex items-center gap-2 text-white bg-gradient-to-b from-blue-7 to-blue-8 leading-none hover:bg-main 
+          rounded-[5px] py-[10px] px-[12px] md:text-[15px] text-sm font-medium mb-[-1px]"
       >
         Xem thêm
       </Link>

@@ -1,9 +1,10 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { IoCheckmarkDoneSharp } from 'react-icons/io5';
+import Image from "next/image";
+import Link from "next/link";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
 
-import './styles.scss';
-import TitleSection from '@/components/TitleSection';
+import "./styles.scss";
+import TitleSection from "@/components/TitleSection";
+import { information } from "@/config/data/information";
 
 const PrintingServicesPage = () => {
   return (
@@ -60,9 +61,9 @@ const PrintingServicesPage = () => {
             className="mx-auto mb-2"
           />
           <p>
-            Năng lực <strong>thiết kế in ấn vượt trội</strong> của LY XANH đã
-            giúp hàng trăm doanh nghiệp đến từ mọi ngành hàng thành công trong
-            chiến dịch tiếp thị của họ
+            Năng lực <strong>thiết kế in ấn vượt trội</strong> của{" "}
+            {information.shopName} đã giúp hàng trăm doanh nghiệp đến từ mọi
+            ngành hàng thành công trong chiến dịch tiếp thị của họ
           </p>
         </div>
         <div className="md:w-1/3 w-full">
@@ -165,7 +166,10 @@ const PrintingServicesPage = () => {
       </section>
 
       <section className="container">
-        <TitleSection title="Quy trình dịch vụ in ấn theo yêu cầu tại Ly Xanh" />
+        <TitleSection
+          title={`Quy trình dịch vụ in ấn theo yêu cầu tại ${information.shopName}`}
+          dataAos="flip-left"
+        />
         <div className="md:block hidden">
           <div className="flex items-center justify-center gap-10 lg:ml-12 ml-0 ">
             <div className="w-1/4">

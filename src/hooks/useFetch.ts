@@ -1,10 +1,10 @@
 // hooks/useFetch.ts
-import useSWR from 'swr';
-import config from '@/config';
+import useSWR from "swr";
+import config from "@/config";
 
 export const fetcher = async (url: string) => {
   const res = await fetch(`${config.apiServerUrl}/api/${url}`);
-  if (!res.ok) throw new Error('Failed to fetch data');
+  if (!res.ok) throw new Error("Failed to fetch data");
   return res.json();
 };
 

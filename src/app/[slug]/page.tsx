@@ -1,6 +1,7 @@
-import config from '@/config';
-import { ICategory } from '@/config/entities';
-import AllProducts from '@/sections/AllProducts';
+import config from "@/config";
+import { ICategory } from "@/config/entities";
+import AllProducts from "@/sections/AllProducts";
+import { notFound } from "next/navigation";
 
 export const revalidate = 60;
 
@@ -19,25 +20,39 @@ async function getCategories() {
   }
 }
 
+async function getCategoryBySlug(slug: string) {
+  try {
+    const res = await fetch(
+      `${config.apiServerUrl}/api/categories/${slug}?client=true`,
+      {
+        next: { revalidate: 60 },
+      }
+    );
+
+    return res.json();
+  } catch (error) {
+    return [];
+  }
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }) {
-  const categories: ICategory[] = await getCategories();
-  const category = categories.find((category) => category.slug === params.slug);
+  const category = await getCategoryBySlug(params.slug);
 
   if (!category) {
     return {
-      title: 'Danh mục không tồn tại',
-      description: 'Không tìm thấy danh mục',
+      title: "Danh mục không tồn tại",
+      description: "Không tìm thấy danh mục",
     };
   }
 
   return {
-    title: category.name || 'Danh mục',
-    description: `Sản phẩm thuộc ${category.name} của Ly Xanh`,
-    icons: 'ly-icon.png',
+    title: category.name || "Danh mục",
+    description: `Sản phẩm thuộc ${category.name}`,
+    icons: category.logoURL,
   };
 }
 
@@ -58,7 +73,7 @@ export default async function ProductDetailPage({
   const category = categories.find((category) => category.slug === params.slug);
 
   if (!category) {
-    return <div>Category not found</div>;
+    return notFound();
   }
 
   return (

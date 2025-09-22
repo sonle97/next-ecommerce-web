@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import Aos from 'aos';
+import { useEffect } from "react";
+import Aos from "aos";
 
-import './styles.scss';
-import CategoryItem from './CategoryItem';
-import { useFetch } from '@/hooks/useFetch';
-import { ICategory } from '@/config/entities';
-import config from '@/config';
+import "./styles.scss";
+import CategoryItem from "./CategoryItem";
+import { useFetch } from "@/hooks/useFetch";
+import { ICategory } from "@/config/entities";
+import config from "@/config";
+import { information } from "@/config/data/information";
 
 function Categories() {
   useEffect(function () {
@@ -15,7 +16,7 @@ function Categories() {
   }, []);
 
   const { data: categories, isLoading } = useFetch<ICategory[]>(
-    'categories?client=true',
+    "categories?client=true",
     {
       revalidateOnFocus: false,
     }
@@ -31,7 +32,7 @@ function Categories() {
       >
         <b className="flex-1 h-[2px] bg-black-1 opacity-10" />
         <span className="mx-4">
-          Danh mục sản phẩm{' '}
+          Sản phẩm của {information.shopName}
           <img src="/title-main.png" alt="icon" className="mx-auto mt-1" />
         </span>
 

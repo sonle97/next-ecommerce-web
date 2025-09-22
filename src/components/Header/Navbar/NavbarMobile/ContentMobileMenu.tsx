@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import Link from 'next/link';
-import { GoChevronRight } from 'react-icons/go';
-import { usePathname, useRouter } from 'next/navigation';
+import React, { useEffect } from "react";
+import Link from "next/link";
+import { GoChevronRight } from "react-icons/go";
+import { usePathname, useRouter } from "next/navigation";
 
-import Logo from '../../SearchSection/Logo';
-import { NavbarList } from '@/config/data/navbar';
-import { ICategory } from '@/config/entities';
-import { useFetch } from '@/hooks/useFetch';
+import Logo from "../../SearchSection/Logo";
+import { NavbarList } from "@/config/data/navbar";
+import { ICategory } from "@/config/entities";
+import { useFetch } from "@/hooks/useFetch";
 
 interface IContentMobileMenu {
   isShowMenuMobile: boolean;
@@ -21,7 +21,7 @@ const ContentMobileMenu = (props: IContentMobileMenu) => {
   const pathName = usePathname();
 
   const { data: categories, isLoading } = useFetch<ICategory[]>(
-    'categories?client=true',
+    "categories?client=true",
     {
       revalidateOnFocus: false,
     }
@@ -29,9 +29,9 @@ const ContentMobileMenu = (props: IContentMobileMenu) => {
 
   useEffect(() => {
     if (isShowMenuMobile) {
-      document.body.classList.add('overflow-hidden');
+      document.body.classList.add("overflow-hidden");
     } else {
-      document.body.classList.remove('overflow-hidden');
+      document.body.classList.remove("overflow-hidden");
     }
   }, [isShowMenuMobile]);
 
@@ -40,10 +40,10 @@ const ContentMobileMenu = (props: IContentMobileMenu) => {
   return (
     <div
       className={`w-full h-full bg-gray-1 fixed top-0 z-50 transition-all duration-300 overflow-y-auto ${
-        isShowMenuMobile ? 'left-0' : '-left-[100%]'
+        isShowMenuMobile ? "left-0" : "-left-[100%]"
       }`}
     >
-      <div className="flex items-center justify-between px-[20px] h-[60px] bg-main text-white">
+      <div className="flex items-center justify-between px-[20px] h-[60px] bg-gradient text-white">
         <div />
         <Logo />
         <GoChevronRight
@@ -57,7 +57,7 @@ const ContentMobileMenu = (props: IContentMobileMenu) => {
         {NavbarList.map((menu, index) => (
           <div
             className={`flex items-center justify-between w-full py-2 px-6 border-b border-gray-1 cursor-pointer hover:text-[#5dac46]
-                  ${pathName == menu.url ? ' text-[#5dac46]' : ''}`}
+                  ${pathName == menu.url ? " text-[#5dac46]" : ""}`}
             key={index}
             onClick={() => {
               router.push(menu.url);

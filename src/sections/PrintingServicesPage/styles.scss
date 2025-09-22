@@ -11,7 +11,7 @@
     overflow: hidden;
     position: relative;
     z-index: 1;
-    color: #3078a6;
+    color: #3165ff;
     border: 1px solid rgb(226, 232, 240);
 
     &::before {
@@ -20,7 +20,7 @@
       right: 0;
       width: 0;
       height: 100%;
-      background: #3078a6;
+      background: #3165ff;
       z-index: -1;
       transition: 0.5s;
       bottom: 0;

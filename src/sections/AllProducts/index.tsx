@@ -1,9 +1,9 @@
-import './styles.scss';
-import Product from '@/components/Product';
-import TitleSection from '@/components/TitleSection';
-import Categories from './Categories';
-import { ICategory, IProduct } from '@/config/entities';
-import config from '@/config';
+import "./styles.scss";
+import Product from "@/components/Product";
+import TitleSection from "@/components/TitleSection";
+import Categories from "./Categories";
+import { ICategory, IProduct } from "@/config/entities";
+import config from "@/config";
 
 interface IAllProducts {
   categorySelected?: ICategory;
@@ -18,10 +18,12 @@ const fetchProductsByCategoryId = async (categoryId?: number) => {
       url += `&categoryId=${categoryId}`;
     }
 
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      next: { revalidate: 60 },
+    });
 
     if (!res.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error("Network response was not ok");
     }
 
     return res.json();
@@ -43,20 +45,21 @@ async function AllProducts(props: IAllProducts) {
         title={
           categorySelected && categorySelected.name
             ? categorySelected.name
-            : 'Tất cả sản phẩm'
+            : "Tất cả sản phẩm"
         }
         isLine={false}
+        dataAos="flip-left"
       />
 
-      <div className="flex items-start lg:flex-row flex-col">
-        <div className="lg:w-1/4 lg:mr-4 lg:mb-0 relative w-full mb-8">
+      <div className="flex items-start flex-col">
+        <div className="relative w-full md:mb-8 mb-4">
           <Categories
             categorySelected={categorySelected}
             categories={categories}
           />
         </div>
-        <div className="lg:w-3/4 w-full">
-          <div className="flex items-start items-center min-[550px]:justify-start justify-center sm:gap-[20px] gap-[10px] flex-wrap all-products">
+        <div className="w-full">
+          <div className="flex items-start items-center justify-start sm:gap-[15px] gap-[10px] flex-wrap all-products">
             {!!products.length ? (
               products.map((product) => (
                 <Product key={product.id} product={product} />

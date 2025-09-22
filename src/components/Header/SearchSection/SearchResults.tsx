@@ -1,10 +1,10 @@
-import { IoCloseOutline } from 'react-icons/io5';
-import { TfiAngleRight } from 'react-icons/tfi';
+import { IoCloseOutline } from "react-icons/io5";
+import { TfiAngleRight } from "react-icons/tfi";
 
-import styles from './styles.module.scss';
-import Image from 'next/image';
-import Link from 'next/link';
-import { IProduct } from '@/config/entities';
+import styles from "./styles.module.scss";
+import Image from "next/image";
+import Link from "next/link";
+import { IProduct } from "@/config/entities";
 
 interface ISearchResults {
   searchResults: IProduct[];
@@ -13,14 +13,14 @@ interface ISearchResults {
 
 const SearchResults = (props: ISearchResults) => {
   const { searchResults, handleOpenSearchResultPanel } = props;
-  console.log(searchResults);
+
   return (
     <div className={styles.search_result_wrapper}>
       <div className="flex items-center justify-between my-2 pl-[10px]">
         <p>
           {searchResults.length > 0
             ? `${searchResults.length} sản phẩm được tìm thấy`
-            : ''}
+            : ""}
         </p>
         <IoCloseOutline
           size={30}
@@ -41,7 +41,7 @@ const SearchResults = (props: ISearchResults) => {
                 <div>
                   <p className="font-medium">{result.name}</p>
                   <p className="text-sm mt-2">
-                    <span>Category:</span>{' '}
+                    <span>Category:</span>{" "}
                     <Link
                       href={result.category.slug}
                       className="hover:underline"

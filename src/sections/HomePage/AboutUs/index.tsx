@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import Aos from 'aos';
-import Image from 'next/image';
-import './styles.scss';
-import Link from 'next/link';
-import TitleSection from '@/components/TitleSection';
+import { useEffect } from "react";
+import Aos from "aos";
+import Image from "next/image";
+import "./styles.scss";
+import Link from "next/link";
+import TitleSection from "@/components/TitleSection";
 
 const AboutUs = () => {
   useEffect(function () {
@@ -31,7 +31,10 @@ const AboutUs = () => {
             về sản xuất và cung cấp bao bì thực phẩm.
           </p>
 
-          <Link className="link-more md:mt-10 mt-6" href="/gioi-thieu">
+          <Link
+            className="link-more md:mt-10 mt-6 md-text-[15px] text-sm"
+            href="/gioi-thieu"
+          >
             Xem thêm
           </Link>
         </div>

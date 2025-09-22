@@ -1,17 +1,17 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import './styles.scss';
-import { ImageProduct } from '@/config/entities';
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import "./styles.scss";
+import { ImageProduct } from "@/config/entities";
 
 const Images = ({ images }: { images: ImageProduct[] }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
@@ -27,10 +27,10 @@ const Images = ({ images }: { images: ImageProduct[] }) => {
       >
         {images &&
           images.map((img: ImageProduct) => (
-            <SwiperSlide key={img.id}>
+            <SwiperSlide key={img.id} className="border rounded-[8px]">
               <img
                 src={img.imageUrl}
-                className="md:h-[370px] sm:h-[330px] h-[280px] w-full object-cover rounded-[8px]"
+                className="md:h-[370px] sm:h-[330px] h-[280px] w-full object-contain rounded-[8px]"
               />
             </SwiperSlide>
           ))}
@@ -48,11 +48,11 @@ const Images = ({ images }: { images: ImageProduct[] }) => {
           images.map((img: ImageProduct) => (
             <SwiperSlide
               key={img.id}
-              className="max-h-[70px] p-0 h-full rounded-[7px] cursor-pointer"
+              className="max-h-[70px] p-0 h-full rounded-[8px] cursor-pointer border rounded-[7px]"
             >
               <img
                 src={img.imageUrl}
-                className="object-cover w-full h-[70px] rounded-[8px]"
+                className="object-contain w-full h-[65px] rounded-[8px]"
               />
             </SwiperSlide>
           ))}

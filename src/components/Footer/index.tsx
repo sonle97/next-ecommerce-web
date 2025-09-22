@@ -1,10 +1,11 @@
-import Link from 'next/link';
-import { FaFacebookF, FaHome, FaTiktok } from 'react-icons/fa';
-import { MdOutlineChevronRight } from 'react-icons/md';
-import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
-import Image from 'next/image';
-import { BsInstagram, BsYoutube } from 'react-icons/bs';
-import { information } from '@/config/data/information';
+import Link from "next/link";
+import { FaFacebookF, FaHome, FaTiktok } from "react-icons/fa";
+import { MdOutlineChevronRight } from "react-icons/md";
+import { AiOutlineMail, AiFillPhone } from "react-icons/ai";
+import Image from "next/image";
+import { BsInstagram, BsYoutube } from "react-icons/bs";
+import { information } from "@/config/data/information";
+import FacebookEmbedComponent from "./FacebookEmbed";
 
 interface ItemLinkProps {
   label: string;
@@ -96,7 +97,7 @@ const Footer = () => {
                   {information.phones.map((phone, index) => (
                     <span key={index}>
                       &nbsp;{phone}
-                      {index < information.phones.length - 1 ? ' - ' : ''}
+                      {index < information.phones.length - 1 ? " - " : ""}
                     </span>
                   ))}
                 </>
@@ -120,12 +121,8 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="mb-2 capitalize">Fanpage</h3>
-            <iframe
-              src={information.facebook}
-              width="250"
-              height="250"
-            ></iframe>
+            <h3 className="mb-3 capitalize">Fanpage</h3>
+            <FacebookEmbedComponent />
           </div>
         </section>
 
@@ -165,12 +162,7 @@ const Footer = () => {
             </div>
             <div className="sm:block hidden">
               <h3 className="mb-2 capitalize">Fanpage</h3>
-              <iframe
-                src={information.facebook}
-                width="150"
-                height="150"
-                className="sm:w-[150px] sm:h-[150px] w-[100px] h-[100px]"
-              />
+              <FacebookEmbedComponent />
             </div>
           </div>
           <div className="flex items-end w-full relative my-4">
@@ -190,7 +182,7 @@ const Footer = () => {
                     {information.phones.map((phone, index) => (
                       <span key={index}>
                         {phone}
-                        {index < information.phones.length - 1 ? ` - ` : ''}
+                        {index < information.phones.length - 1 ? ` - ` : ""}
                       </span>
                     ))}
                   </>
@@ -246,8 +238,9 @@ const Footer = () => {
         </section>
 
         <div className="container border-t w-full text-center text-white text-sm py-4">
-          Copyright 2023 © Thiết kế website <b>LyXanh</b> bởi Mr. SonLe
-          (0347.366.345)
+          Copyright 2023 © Thiết kế website{" "}
+          <strong>{information.shopName}</strong> bởi Mr.SonLe (
+          {information.phones[0]})
         </div>
       </footer>
     </>

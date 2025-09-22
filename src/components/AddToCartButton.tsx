@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { BsCart4 } from 'react-icons/bs';
-import { ACTION_TYPES, UnitOfMeasure, useCart } from '@/context/CartContext';
-import { IProduct } from '@/config/entities';
+import { BsCart4 } from "react-icons/bs";
+import { ACTION_TYPES, useCart } from "@/context/CartContext";
+import { IProduct } from "@/config/entities";
 
 interface IAddToCart {
   product: IProduct;
@@ -16,10 +16,11 @@ const AddToCart = (props: IAddToCart) => {
   const addToCart = () => {
     const newProduct = {
       id: product.id,
+      code: product.code,
       name: product.name,
       image: product.images[0].imageUrl,
+      price: product.price,
       quantity: 1,
-      unit_of_measure: UnitOfMeasure.box,
     };
 
     dispatch({ type: ACTION_TYPES.ADD_PRODUCT, payload: newProduct });
@@ -33,7 +34,7 @@ const AddToCart = (props: IAddToCart) => {
         onClick={() => addToCart()}
       >
         <BsCart4 size={20} />
-        {text && <span className="text-sm">Add to cart</span>}
+        {text && <span className="sm:text-base text-sm">{text}</span>}
       </div>
     </>
   );

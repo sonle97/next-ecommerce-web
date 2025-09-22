@@ -12,17 +12,29 @@ import Link from "next/link";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
-
-import img from "@/images/news/item.jpg";
-import img2 from "@/images/news/item2.jpg";
 import TitleSection from "@/components/TitleSection";
 
 import "./styles.scss";
+import { IArticle } from "@/config/entities";
+import { useFetch } from "@/hooks/useFetch";
+import moment from "moment";
 
-function SimilarArticlesPage() {
+function SimilarArticlesPage({ currentArticle }: { currentArticle: IArticle }) {
   useEffect(function () {
     Aos.init({ duration: 1500, once: true });
   }, []);
+
+  const { data: articles } = useFetch<IArticle[]>("articles?client=true", {
+    revalidateOnFocus: false,
+  });
+
+  const filteredArticles = articles.filter(
+    (article) =>
+      article.id !== currentArticle.id &&
+      article.category === currentArticle.category
+  );
+
+  if (!filteredArticles.length) return null;
 
   return (
     <section>
@@ -56,50 +68,28 @@ function SimilarArticlesPage() {
         }}
         data-aos="fade-up"
       >
-        <SwiperSlide className="blog-item-wrapper">
-          <div className="relative blog-item overflow-hidden z-10">
-            <Image src={img} alt="blog-img" />
-          </div>
-          <div className="z-20 absolute bottom-8 px-6 w-full text text-white md:text-[16px] text-[15px] font-bold">
-            <Link href="">Quy trình sản xuất...</Link>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide className="blog-item-wrapper">
-          <div className="relative blog-item overflow-hidden">
-            <Image src={img2} alt="blog-img" />
-          </div>
-          <div className="z-20 absolute bottom-8 px-6 w-full text text-white md:text-[16px] text-[15px] font-bold">
-            <Link href="">Quy trình sản xuất...</Link>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide className="blog-item-wrapper">
-          <div className="relative blog-item overflow-hidden">
-            <Image src={img} alt="blog-img" />
-          </div>
-          <div className="z-20 absolute bottom-8 px-6 w-full text text-white md:text-[16px] text-[15px] font-bold">
-            <Link href="">Quy trình sản xuất...</Link>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide className="blog-item-wrapper">
-          <div className="relative blog-item overflow-hidden">
-            <Image src={img2} alt="blog-img" />
-          </div>
-          <div className="z-20 absolute bottom-8 px-6 w-full text text-white md:text-[16px] text-[15px] font-bold">
-            <Link href="">Quy trình sản xuất...</Link>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide className="blog-item-wrapper">
-          <div className="relative blog-item overflow-hidden">
-            <Image src={img} alt="blog-img" />
-          </div>
-          <div className="z-20 absolute bottom-8 px-6 w-full text text-white md:text-[16px] text-[15px] font-bold">
-            <Link href="">Quy trình sản xuất...</Link>
-          </div>
-        </SwiperSlide>
+        {filteredArticles &&
+          filteredArticles.map((article) => (
+            <SwiperSlide className="blog-item-wrapper">
+              <div className="relative blog-item overflow-hidden z-10">
+                <Image
+                  src={article.thumbnail}
+                  alt="blog-img"
+                  width={300}
+                  height={200}
+                  className="object-cover w-full"
+                />
+              </div>
+              <div className="absolute z-20 p-4 py-2 top-1.5 left-1.5 min-w-[50px] text-white md:text-[15px] text-sm bg-main text-center rounded-[8px] font-medium flex items-center justify-center">
+                {moment(article.createdAt).format("dd-MM")}
+              </div>
+              <div className="z-20 absolute bottom-8 px-6 w-full text text-white md:text-[16px] text-[15px] font-bold">
+                <Link href={`/tin-tuc/${article.slug}`} className="truncate">
+                  {article.slug}
+                </Link>
+              </div>
+            </SwiperSlide>
+          ))}
       </Swiper>
     </section>
   );

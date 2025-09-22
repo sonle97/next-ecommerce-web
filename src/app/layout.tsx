@@ -1,17 +1,20 @@
-import type { Metadata } from 'next';
-import ButtonScrollOnTop from '@/components/ButtonScrollOnTop';
-import Footer from '@/components/Footer';
-import { cn } from '@/lib/utils';
-import { CartProvider } from '@/context/CartContext';
-import Header from '@/components/Header';
-import SupportButtons from '@/components/SupportButtons';
-import './globals.css';
-import './app.scss';
+import type { Metadata } from "next";
+import ButtonScrollOnTop from "@/components/ButtonScrollOnTop";
+import Footer from "@/components/Footer";
+import { cn } from "@/lib/utils";
+import { CartProvider } from "@/context/CartContext";
+import Header from "@/components/Header";
+import SupportButtons from "@/components/SupportButtons";
+import LiveChat from "@/components/LiveChat";
+import { information } from "@/config/data/information";
+
+import "./globals.css";
+import "./app.scss";
 
 export const metadata: Metadata = {
-  title: 'Ly xanh',
-  description: 'Trang chủ ly xanh 73',
-  icons: 'ly-icon.png',
+  title: `${information.shopName}`,
+  description: "Trang chủ",
+  icons: "ly-icon.png",
 };
 
 export default function RootLayout({
@@ -21,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn('min-h-screen bg-background font-sans antialiased')}>
+      <body className={cn("min-h-screen bg-background font-sans antialiased")}>
         <CartProvider>
           <Header />
           {children}
@@ -30,6 +33,7 @@ export default function RootLayout({
 
         <ButtonScrollOnTop />
         <SupportButtons />
+        <LiveChat />
       </body>
     </html>
   );

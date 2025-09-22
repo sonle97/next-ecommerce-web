@@ -1,8 +1,8 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
-import Link from 'next/link';
-import { ICategory } from '@/config/entities';
+import Link from "next/link";
+import { ICategory } from "@/config/entities";
 interface ICategoryItem {
   category: ICategory;
   dataAos: string;
@@ -22,7 +22,7 @@ const CategoryItem = (props: ICategoryItem) => {
             src={imageURL}
             alt={name}
             width={220}
-            height={200}
+            height={180}
             className="rounded-tl-[15px] rounded-tr-[15px] max-w-full w-full object-cover"
           />
         </div>

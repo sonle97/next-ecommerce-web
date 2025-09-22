@@ -1,29 +1,50 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { Navigation, Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import Aos from 'aos';
+import { useEffect, useState } from "react";
+import { Navigation, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import Aos from "aos";
 
-import TitleCategory from '@/components/TitleCategory';
-import { useFetch } from '@/hooks/useFetch';
-import { IProduct } from '@/config/entities';
-import Product from '@/components/Product';
+import TitleCategory from "@/components/TitleCategory";
+import { useFetch } from "@/hooks/useFetch";
+import { IProduct } from "@/config/entities";
+import Product from "@/components/Product";
 
 const initData = [
   {
     category: {
-      name: 'Sản phẩm bán chạy',
-      url: '/cua-hang',
+      name: "Sản phẩm bán chạy",
+      url: "/cua-hang",
     },
     products: [] as IProduct[],
   },
   {
     category: {
-      name: 'Sản phẩm mới',
-      url: '/cua-hang',
+      name: "Sản phẩm bán chạy",
+      url: "/cua-hang",
+    },
+    products: [] as IProduct[],
+  },
+  {
+    category: {
+      name: "Sản phẩm bán chạy",
+      url: "/cua-hang",
+    },
+    products: [] as IProduct[],
+  },
+  {
+    category: {
+      name: "Sản phẩm bán chạy",
+      url: "/cua-hang",
+    },
+    products: [] as IProduct[],
+  },
+  {
+    category: {
+      name: "Sản phẩm mới",
+      url: "/cua-hang",
     },
     products: [] as IProduct[],
   },
@@ -38,7 +59,7 @@ const ProductList = () => {
   }, []);
 
   const { data: products, isLoading } = useFetch<IProduct[]>(
-    'products?client=true',
+    "products?client=true",
     {
       revalidateOnFocus: false,
     }
@@ -74,8 +95,8 @@ const ProductList = () => {
               }}
               breakpoints={{
                 1024: {
-                  slidesPerView: 4,
-                  spaceBetween: 30,
+                  slidesPerView: 5,
+                  spaceBetween: 20,
                 },
                 768: {
                   slidesPerView: 4,

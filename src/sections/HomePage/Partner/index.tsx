@@ -14,6 +14,7 @@ import "swiper/css/scrollbar";
 import logo1 from "@/images/partners/logo.png";
 import logo2 from "@/images/partners/logo2.png";
 import TitleSection from "@/components/TitleSection";
+import { information } from "@/config/data/information";
 
 const partnerIcon = [
   {
@@ -43,7 +44,7 @@ function PartnerSection() {
 
   return (
     <section className="mt-4 mb-8">
-      <TitleSection title="Đối tác của Ly Xanh" />
+      <TitleSection title={`Đối tác của ${information.shopName}`} />
 
       <Swiper
         className="partners_slide"
@@ -52,26 +53,27 @@ function PartnerSection() {
           delay: 3000,
           disableOnInteraction: false,
         }}
+        loop={true}
         breakpoints={{
           1024: {
-            slidesPerView: 4,
-            spaceBetween: 30,
+            slidesPerView: 5,
+            spaceBetween: 15,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 15,
           },
           640: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 15,
           },
           414: {
             slidesPerView: 2,
-            spaceBetween: 13,
+            spaceBetween: 10,
           },
           320: {
-            slidesPerView: 1,
-            spaceBetween: 0,
+            slidesPerView: 2,
+            spaceBetween: 5,
           },
         }}
         data-aos="fade-up"
@@ -81,9 +83,9 @@ function PartnerSection() {
             <Image
               src={item.url}
               alt="img"
-              width={150}
-              height={100}
-              className="sm:h-[100px] h-[80px] w-auto mx-auto object-cover"
+              width={120}
+              height={80}
+              className="lg:h-[80] md:h-[60px] h-[50px] w-auto mx-auto object-cover"
             />
           </SwiperSlide>
         ))}

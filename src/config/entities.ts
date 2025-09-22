@@ -19,9 +19,22 @@ export interface IProduct {
   isBestSeller: boolean;
   images: ImageProduct[];
   category: ICategory;
+  size: string;
+  oldPrice?: number;
 }
 
 export interface ImageProduct {
   id: number;
   imageUrl: string;
+}
+
+export interface IArticle {
+  id: number;
+  title: string;
+  slug: string;
+  category: string;
+  thumbnail: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
 }

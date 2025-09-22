@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import moment from 'moment';
+import React from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import moment from "moment";
 
-import OrderProduct from '@/api/OrderProduct';
-import { Button } from '@/components/ui/button';
-import { BiArrowBack } from 'react-icons/bi';
+import OrderProduct from "@/api/OrderProduct";
+import { Button } from "@/components/ui/button";
+import { BiArrowBack } from "react-icons/bi";
 
 const OrderStatus: any = {
-  pending: 'Đang xác nhận',
-  shipping: 'Đang giao hàng',
-  completed: 'Hoàn thành',
-  canceled: 'Hủy bỏ',
+  pending: "Đang xác nhận",
+  shipping: "Đang giao hàng",
+  completed: "Hoàn thành",
+  canceled: "Hủy bỏ",
 };
 
 const OrderDetailSection = () => {
@@ -21,8 +21,8 @@ const OrderDetailSection = () => {
   const [loading, setLoading] = useState(true);
 
   const orderIds =
-    typeof window !== 'undefined'
-      ? JSON.parse(localStorage.getItem('orderIds') || '[]')
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("orderIds") || "[]")
       : [];
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const OrderDetailSection = () => {
           });
           setOrders(data);
         } catch (error) {
-          console.error('Error fetching orders:', error);
+          console.error("Error fetching orders:", error);
         } finally {
           setLoading(false);
         }
@@ -58,11 +58,11 @@ const OrderDetailSection = () => {
               Mã đơn hàng: <strong>#{order.orderId}</strong>
             </p>
             <p>
-              Ngày tạo:{' '}
-              <span>{moment(order.createdAt).format('HH:MM DD/MM/YYYY')}</span>
+              Ngày tạo:{" "}
+              <span>{moment(order.createdAt).format("HH:MM DD/MM/YYYY")}</span>
             </p>
             <p>
-              Trạng thái đơn hàng:{' '}
+              Trạng thái đơn hàng:{" "}
               <span className={`text-${order.status}`}>
                 {OrderStatus[order.status]}
               </span>
@@ -75,7 +75,6 @@ const OrderDetailSection = () => {
                     <th className="p-2 border-[2px]">Mã sản pẩm</th>
                     <th className="p-2 border-[2px]">Tên sản phẩm</th>
                     <th className="py-2 border-[2px]">Số lượng</th>
-                    <th className="p-2 border-[2px]">Đơn vị tính</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -92,11 +91,6 @@ const OrderDetailSection = () => {
                       <td className="p-2 border text-center">
                         {orderItem.quantity}
                       </td>
-                      <td className="p-2 border text-center">
-                        {orderItem.unit_of_measure === 'piece'
-                          ? 'Cái'
-                          : 'Thùng'}
-                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -105,7 +99,7 @@ const OrderDetailSection = () => {
           </div>
         ))
       ) : (
-        <>
+        <div className="h-[300px] flex flex-col items-center justify-center">
           <p className="w-full text-center mt-4">Không có đơn hàng nào</p>
 
           <Link href="/cua-hang" passHref>
@@ -116,7 +110,7 @@ const OrderDetailSection = () => {
               Quay lại cửa hàng
             </Button>
           </Link>
-        </>
+        </div>
       )}
     </section>
   );

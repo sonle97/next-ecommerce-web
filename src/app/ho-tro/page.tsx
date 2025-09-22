@@ -1,4 +1,5 @@
-import TitleSection from '@/components/TitleSection';
+import TitleSection from "@/components/TitleSection";
+import { information } from "@/config/data/information";
 
 export default function PolicyPage() {
   return (
@@ -17,7 +18,7 @@ export default function PolicyPage() {
             </ul>
           </li>
           <li className="mb-4 font-bold">
-            Cách thứ hai:{' '}
+            Cách thứ hai:{" "}
             <span className="font-[400]"> Đặt hàng qua website:</span>
             <ul className="list-disc pl-[20px] font-[400]">
               <li>
@@ -245,10 +246,11 @@ export default function PolicyPage() {
       <section id="chinh-sach-doi-tra" className="pt-[80px]">
         <TitleSection title="Chính sách đổi trả" />
         <p className="mb-2">
-          Tại SonPack, chúng tôi trân trọng sự tin tưởng của khách hàng khi đặt
-          mua sản phẩm. Chính sách hậu mãi của Son Pack được xây dựng dựa trên
-          cam kết bảo vệ quyền lợi người tiêu dùng để quý khách có thể yên tâm
-          mua hàng và tin tưởng sử dụng sản phẩm của công ty.
+          Tại {information.shopName}, chúng tôi trân trọng sự tin tưởng của
+          khách hàng khi đặt mua sản phẩm. Chính sách hậu mãi của Son Pack được
+          xây dựng dựa trên cam kết bảo vệ quyền lợi người tiêu dùng để quý
+          khách có thể yên tâm mua hàng và tin tưởng sử dụng sản phẩm của công
+          ty.
         </p>
         <ul className="list-decimal pl-[20px]">
           <li className="mb-4 font-bold">
@@ -282,8 +284,8 @@ export default function PolicyPage() {
           phẩm trong mọi điều kiện.
         </p>
         <p>
-          SONPACK sẽ tiếp nhận thông tin và phản hồi về hướng xử lý thích hợp
-          nhất ngay khi nhận được yêu cầu của khách hàng.
+          {information.shopName} sẽ tiếp nhận thông tin và phản hồi về hướng xử
+          lý thích hợp nhất ngay khi nhận được yêu cầu của khách hàng.
         </p>
       </section>
     </div>

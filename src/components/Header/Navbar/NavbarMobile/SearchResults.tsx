@@ -1,17 +1,16 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FiSearch } from 'react-icons/fi';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import { IoCloseOutline } from 'react-icons/io5';
-import { TfiAngleRight } from 'react-icons/tfi';
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { FiSearch } from "react-icons/fi";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { IoCloseOutline } from "react-icons/io5";
+import { TfiAngleRight } from "react-icons/tfi";
 
-import styles from '../../SearchSection/styles.module.scss';
-import { dataSearch } from '../../SearchSection/SearchBar';
-import Product from '@/api/Product';
-import { IProduct } from '@/config/entities';
+import styles from "../../SearchSection/styles.module.scss";
+import Product from "@/api/Product";
+import { IProduct } from "@/config/entities";
 
 interface ISearchResults {
   handleOpenSearchResultPanel: Function;
@@ -19,7 +18,7 @@ interface ISearchResults {
 
 const SearchResults = (props: ISearchResults) => {
   const { handleOpenSearchResultPanel } = props;
-  const [searchValue, setSearchValueInput] = useState('');
+  const [searchValue, setSearchValueInput] = useState("");
 
   const [searchResults, setSearchResults] = useState<IProduct[]>([]);
   const [searching, setSearching] = useState(false);
@@ -35,7 +34,7 @@ const SearchResults = (props: ISearchResults) => {
 
       setSearchResults(data);
     } catch (error) {
-      console.log('error', error);
+      console.log("error", error);
     } finally {
       setSearching(false);
     }
@@ -53,7 +52,7 @@ const SearchResults = (props: ISearchResults) => {
 
       <div className={`flex items-center ${styles.search_bar} mb-4`}>
         <input
-          className=""
+          className="font-medium"
           placeholder="Tìm kiếm danh mục, sản phẩm..."
           onChange={(e) => setSearchValueInput(e.target.value)}
           value={searchValue}
@@ -64,7 +63,7 @@ const SearchResults = (props: ISearchResults) => {
               className="text-white text-sm mx-auto"
               size={20}
               style={{
-                animation: 'spin 1s linear infinite',
+                animation: "spin 1s linear infinite",
               }}
             />
           ) : (
@@ -75,7 +74,7 @@ const SearchResults = (props: ISearchResults) => {
       <p className="mb-2 pl-[10px]">
         {searchResults.length > 0
           ? `${searchResults.length} sản phẩm được tìm thấy`
-          : ''}
+          : ""}
       </p>
       <div className={styles.search_result}>
         {searchResults.length > 0 ? (
@@ -90,7 +89,7 @@ const SearchResults = (props: ISearchResults) => {
                 <div>
                   <p className="font-medium">{result.name}</p>
                   <p className="text-sm mt-1">
-                    <span>Category:</span>{' '}
+                    <span>Category:</span>{" "}
                     <Link
                       href={result.category.slug}
                       className="hover:underline"

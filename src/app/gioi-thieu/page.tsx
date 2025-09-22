@@ -1,3 +1,4 @@
+import { information } from "@/config/data/information";
 import Image from "next/image";
 
 export default function Intro() {
@@ -19,22 +20,23 @@ export default function Intro() {
       >
         <section className="container px-4">
           <p className="text-[24px] text-center font-bold text-green-4 mb-8 sm:text-[40px] text-[35px] font-[cursive]">
-            LY XANH
+            {information.shopName}
           </p>
 
           <h2 className="text-main sm:text-left text-center sm-[text-25px] text-[20px] sm:[mb-8] mb-4">
             LỊCH SỬ PHÁT TRIỂN
           </h2>
           <p className="mb-4">
-            LY XANH chuyên thiết kế và cung cấp các sản phẩm bao bì thực phẩm
-            cho ngành thức ăn nhanh. Ly Xanh có nhiều năm kinh nghiệm sản xuất
-            và cung cấp một số mặt hàng bao bì ra thị trường quốc tế. Hiện nay,
-            chúng tôi mở rộng kinh doanh tất cả các sản phẩm bao bì và phục vụ
-            nhu cầu trong nước.
+            {information.shopName} chuyên thiết kế và cung cấp các sản phẩm bao
+            bì thực phẩm cho ngành thức ăn nhanh. {information.shopName} có
+            nhiều năm kinh nghiệm sản xuất và cung cấp một số mặt hàng bao bì ra
+            thị trường quốc tế. Hiện nay, chúng tôi mở rộng kinh doanh tất cả
+            các sản phẩm bao bì và phục vụ nhu cầu trong nước.
           </p>
           <p className="lg:mb-[70px] mb-[40px]">
-            Sau 5 năm hoạt động, Ly Xanh dần khẳng định vị thế của mình trên thị
-            trường với hơn 300 mã sản phẩm cho 10,000 khách hàng ở khắp cả nước.
+            Sau 5 năm hoạt động, {information.shopName} dần khẳng định vị thế
+            của mình trên thị trường với hơn 300 mã sản phẩm cho 10,000 khách
+            hàng ở khắp cả nước.
           </p>
           <div className="flex items-center justify-between lg:flex-row flex-col-reverse">
             <div className="lg:mr-10 lg:pr-4">

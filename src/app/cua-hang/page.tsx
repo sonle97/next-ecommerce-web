@@ -1,12 +1,12 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
-import AllProducts from '@/sections/AllProducts';
-import config from '@/config';
+import AllProducts from "@/sections/AllProducts";
+import config from "@/config";
 
 export const metadata: Metadata = {
-  title: 'Cửa hàng',
-  description: 'Tất cả các sản phẩm của Ly xanh',
-  icons: 'ly-icon.png',
+  title: "Cửa hàng",
+  description: "Tất cả các sản phẩm",
+  icons: "ly-icon.png",
 };
 
 const fetchCategories = async () => {
@@ -14,12 +14,12 @@ const fetchCategories = async () => {
     const res = await fetch(
       `${config.apiServerUrl}/api/categories?client=true`,
       {
-        cache: 'force-cache',
+        cache: "force-cache",
       }
     );
 
     if (!res.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error("Network response was not ok");
     }
 
     return res.json();

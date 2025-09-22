@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { FaBars } from 'react-icons/fa';
-import { usePathname } from 'next/navigation';
-import Image from 'next/image';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { FaBars } from "react-icons/fa";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
-import styles from './styles.module.scss';
-import { useWindowScrollPositions } from '@/hooks/useWindowScrollPositions';
-import config from '@/config';
-import { ICategory } from '@/config/entities';
-import { useFetch } from '@/hooks/useFetch';
+import styles from "./styles.module.scss";
+import { useWindowScrollPositions } from "@/hooks/useWindowScrollPositions";
+import config from "@/config";
+import { ICategory } from "@/config/entities";
+import { useFetch } from "@/hooks/useFetch";
 
 function Categories() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
@@ -18,10 +18,10 @@ function Categories() {
   const { scrollY } = useWindowScrollPositions();
   const isShowButtonScrollToTop = scrollY > 200;
 
-  const isHomePage = pathname === '/';
+  const isHomePage = pathname === "/";
 
   const { data: categories, isLoading } = useFetch<ICategory[]>(
-    'categories?client=true',
+    "categories?client=true",
     {
       revalidateOnFocus: false,
     }
@@ -48,7 +48,7 @@ function Categories() {
   return (
     <div className="relative w-1/4 h-full lg:block hidden">
       <div
-        className="flex items-center h-full bg-main text-white px-4 py-4 cursor-pointer capitalize"
+        className="flex items-center h-full bg-gradient-to-b from-blue-7 to-blue-8 text-white px-4 py-4 cursor-pointer capitalize"
         onClick={() => {
           isHomePage && !isShowButtonScrollToTop
             ? null
@@ -71,10 +71,12 @@ function Categories() {
                     <Image
                       src={category.logoURL}
                       alt={category.name}
-                      width={25}
-                      height={25}
+                      width={30}
+                      height={30}
                     />
-                    <div className="flex items-center">{category.name}</div>
+                    <div className="flex items-center text-base">
+                      {category.name}
+                    </div>
                   </Link>
                 </li>
               );

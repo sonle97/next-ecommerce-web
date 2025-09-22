@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { IProduct } from '@/config/entities';
-import React, { useState } from 'react';
-import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md';
+import { IProduct } from "@/config/entities";
+import React, { useState } from "react";
+import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
 
 const ReadMore = ({ content }: { content: string }) => {
   const [isReadMore, setIsReadMore] = useState(false);
@@ -16,7 +16,10 @@ const ReadMore = ({ content }: { content: string }) => {
 
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: contentShow }} />
+      <div
+        className="editor-content"
+        dangerouslySetInnerHTML={{ __html: contentShow }}
+      />
 
       {contentLength > 1500 && (
         <div

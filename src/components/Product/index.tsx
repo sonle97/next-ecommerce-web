@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from "next/link";
+import Image from "next/image";
 
-import './styles.scss';
-import AddToCartButton from '../AddToCartButton';
-import { IProduct } from '@/config/entities';
+import "./styles.scss";
+import AddToCartButton from "../AddToCartButton";
+import { IProduct } from "@/config/entities";
 
 interface ProductProps {
   product: IProduct;
@@ -25,7 +25,7 @@ const Product = (props: ProductProps) => {
         className="rounded-tl-lg rounded-tr-lg"
       >
         <Image
-          src={(product?.images && product?.images[0].imageUrl) || ''}
+          src={(product?.images && product?.images[0].imageUrl) || ""}
           alt="product"
           width="350"
           height="350"
@@ -35,14 +35,21 @@ const Product = (props: ProductProps) => {
       <div className="px-2 sm:py-4 py-2 z-1 bg-white w-full text-center rounded-bl-lg rounded-br-lg">
         <Link
           href={`/${product?.category?.slug}/${product.slug}`}
-          className="text-blue-3 hover:text-blue-2 lg:font-bold font-medium lg:text-base text-[15px]"
+          className="text-main hover:text-blue-2 font-medium lg:text-[15px] text-[14px]"
         >
-          <p>{product.name}</p>
+          <p className="line-clamp-2 lg:min-h-[48px] min-h-[40px]">
+            {product.name}
+          </p>
         </Link>
 
         <div className="flex items-center justify-evenly mt-2">
-          <p className="lg:text-[14px] text-[13px] text-red-1 text-center font-medium">
-            Liên hệ
+          <p className="lg:text-[16px] text-[14px] text-red-1 text-center font-medium">
+            {product.price
+              ? product.price.toLocaleString("vi-VN", {
+                  style: "currency",
+                  currency: "VND",
+                })
+              : "Liên hệ"}
           </p>
         </div>
       </div>

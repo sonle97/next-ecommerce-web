@@ -1,48 +1,15 @@
-'use client';
-import { useState } from 'react';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+"use client";
+import { useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-import { FiSearch } from 'react-icons/fi';
-import styles from './styles.module.scss';
-import SearchResults from './SearchResults';
-import Product from '@/api/Product';
-import { IProduct } from '@/config/entities';
-
-export const dataSearch = [
-  {
-    id: 1,
-    title: 'test',
-    category: 'category a',
-  },
-  {
-    id: 2,
-    title: 'test',
-    category: 'category a',
-  },
-  {
-    id: 3,
-    title: 'test',
-    category: 'category a',
-  },
-  {
-    id: 4,
-    title: 'test',
-    category: 'category a',
-  },
-  {
-    id: 5,
-    title: 'test',
-    category: 'category a',
-  },
-  {
-    id: 6,
-    title: 'test',
-    category: 'category a',
-  },
-];
+import { FiSearch } from "react-icons/fi";
+import styles from "./styles.module.scss";
+import SearchResults from "./SearchResults";
+import Product from "@/api/Product";
+import { IProduct } from "@/config/entities";
 
 function SearchBar() {
-  const [searchValue, setSearchValueInput] = useState('');
+  const [searchValue, setSearchValueInput] = useState("");
   const [isSearchResultPanelOpen, setIsSearchResultPanelOpen] = useState(false);
   const [searchResults, setSearchResults] = useState<IProduct[]>([]);
   const [searching, setSearching] = useState(false);
@@ -66,7 +33,7 @@ function SearchBar() {
       setSearchResults(data);
       setIsSearchResultPanelOpen(true);
     } catch (error) {
-      console.log('error', error);
+      console.log("error", error);
     } finally {
       setSearching(false);
     }
@@ -80,7 +47,7 @@ function SearchBar() {
     <div className="relative">
       <div className={`flex items-center ${styles.search_bar}`}>
         <input
-          className=""
+          className="font-medium"
           placeholder="Tìm kiếm danh mục, sản phẩm..."
           onChange={(e) => handleChangeSearchValue(e.target.value)}
           value={searchValue}
@@ -91,7 +58,7 @@ function SearchBar() {
               className="text-white text-sm mx-auto"
               size={20}
               style={{
-                animation: 'spin 1s linear infinite',
+                animation: "spin 1s linear infinite",
               }}
             />
           ) : (

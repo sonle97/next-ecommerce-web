@@ -1,9 +1,10 @@
-import { useRef } from 'react';
-import moment from 'moment';
-import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import Modal, { ModalProps } from '@/components/ui/Modal';
-import { ACTION_TYPES, useCart } from '@/context/CartContext';
+import { useRef } from "react";
+import moment from "moment";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import Modal, { ModalProps } from "@/components/ui/Modal";
+import { ACTION_TYPES, useCart } from "@/context/CartContext";
+import { information } from "@/config/data/information";
 
 interface IOrderSuccessModal extends ModalProps {
   orders: any;
@@ -18,14 +19,14 @@ const OrderSuccessModal = (props: IOrderSuccessModal) => {
 
   function onClose(): void {
     modalRef.current.close();
-    router.push('/cua-hang');
+    router.push("/cua-hang");
 
     // Reset cart
     dispatch({ type: ACTION_TYPES.CLEAR_CART });
   }
 
   function onViewOrderDetail(): void {
-    router.push('/chi-tiet-don-hang');
+    router.push("/chi-tiet-don-hang");
     // Reset cart
     dispatch({ type: ACTION_TYPES.CLEAR_CART });
   }
@@ -37,14 +38,14 @@ const OrderSuccessModal = (props: IOrderSuccessModal) => {
       title="Đặt hàng thành công!"
       description={
         <>
-          Cảm ơn bạn đã đặt hàng tại{' '}
-          <strong className="text-main">sonpack</strong>
+          Cảm ơn bạn đã đặt hàng tại{" "}
+          <strong className="text-main">{information.shopName}</strong>
         </>
       }
     >
       <ul className="mt-4 list-disc pl-5">
         <li>
-          <strong>Mã đơn hàng:</strong>{' '}
+          <strong>Mã đơn hàng:</strong>{" "}
           <span
             className="font-bold underline text-main cursor-pointer"
             onClick={onViewOrderDetail}
@@ -53,15 +54,15 @@ const OrderSuccessModal = (props: IOrderSuccessModal) => {
           </span>
         </li>
         <li className="my-2">
-          <strong>Ngày đặt hàng:</strong>{' '}
-          {moment(orders.createdAt).format('DD/MM/YYYY')}
+          <strong>Ngày đặt hàng:</strong>{" "}
+          {moment(orders.createdAt).format("DD/MM/YYYY")}
         </li>
         <li className="my-2">
           <strong>Phương thức thanh toán:</strong> Thanh toán khi nhận hàng hoặc
           chuyển khoản
         </li>
         <li>
-          <strong>Xem chi tiết đơn hàng tại</strong>{' '}
+          <strong>Xem chi tiết đơn hàng tại</strong>{" "}
           <span
             className="font-bold underline text-main cursor-pointer"
             onClick={onViewOrderDetail}
